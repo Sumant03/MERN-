@@ -1,0 +1,92 @@
+function xml(input, options) {
+
+    if (typeof options !== 'object') {
+        options = {
+            indent: options
+        };
+    }
+
+    var stream      = options.stream ? new Stream() : null,
+        output      = "",
+        interrupted = false,
+        indent      = !options.indent ? ''
+                        : options.indent === true ? DEFAULT_INDENT
+                            : options.indent,
+        instant     = true;
+
+
+    function delay (func) {
+        if (!instant) {
+            func();
+        } else {
+            process.nextTick(func);
+        }
+    }
+
+    function append (interrupt, out) {
+        if (out !== undefined) {
+            output += out;
+        }
+        if (interrupt && !interrupted) {
+            stream = stream || new Stream();
+            interrupted = true;
+        }
+        if (interrupt && interrupted) {
+            var data = output;
+            delay(function () { stream.emit('data', data) });
+            output = "";
+        }
+    }
+
+    function add (value, last) {
+        format(append, resolve(value, indent, indent ? 1 : 0), last);
+    }
+
+    function end() {
+        if (stream) {
+            var data = output;
+            delay(function () {
+              stream.emit('data', data);
+              stream.emit('end');
+              stream.readable = false;
+              stream.emit('close');
+            });
+        }
+    }
+
+    function addXmlDeclaration(declaration) {
+        var encoding = declaration.encoding || 'UTF-8',
+            attr =  { version: '1.0', encoding: encoding };
+
+        if (declaration.standalone) {
+            attr.standalone = declaration.standalone
+        }
+
+        add({'?xml': { _attr: attr } });
+        output = output.replace('/>', '?>');
+    }
+
+    // disable delay delayed
+    delay(function () { instant = false });
+
+    if (options.declaration) {
+        addXmlDeclaration(options.declaration);
+    }
+
+    if (input && input.forEach) {
+        input.forEach(function (value, i) {
+            var last;
+            if (i + 1 === input.length)
+                last = end;
+            add(value, last);
+        });
+    } else {
+        add(input, end);
+    }
+
+    if (stream) {
+        stream.readable = true;
+        return stream;
+    }
+    return output;
+}

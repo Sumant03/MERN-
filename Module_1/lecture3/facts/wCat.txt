@@ -1,0 +1,13 @@
+#WCAt commands
+
+#cat f1.txt=> shows the output of the file f1.txt;
+#cat f1.txt f2.txt=> show the content of ile f1.txt and f2.txt together
+
+Commands:-
+
+#-s  =>this will remove all lines except one line.
+#-b  =>this falg is used to add a line number on non empty lines
+#-n  => ths fag is used to add a line number on all lines
+
+#if both -b &-n commands occur then command having lower  index will be 
+

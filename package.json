@@ -1,0 +1,25 @@
+{
+  "name": "Dev-Pepcoding",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sumant03/Lecture1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sumant03/Lecture1/issues"
+  },
+  "homepage": "https://github.com/Sumant03/Lecture1#readme",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.6",
+    "request": "^2.88.2",
+    "xml": "^1.0.1"
+  }
+}
