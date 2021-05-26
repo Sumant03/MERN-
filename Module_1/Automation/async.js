@@ -8,10 +8,9 @@ async function login(){
         headless: false,
         defaultViewport: null,
         args: ["--start-maximized"],
-        
-      });
-    let pages = await browser.pages();
-    let tab = pages[0];
+         });
+    let page = await browser.pages();
+    let tab = page[0];
     await tab.goto("https://www.hackerrank.com/auth/login");
     await tab.type("#input-1", id);
     await tab.type("#input-2", pw);
