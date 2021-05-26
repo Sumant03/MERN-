@@ -13,10 +13,10 @@ function processData(html){
 // one line left
 let myDocument=cheerio.load(html);
 let aTag=myDocument(".widget-items.cta-link a");
- console.log(aTag);
-    // let allMatchesLink="https://www.espncricinfo.com"+aTag["0"].attribs.href;
-    // // console.log(allMatchesLink);
-    //  getAllMatches(allMatchesLink);
+
+    let allMatchesLink="https://www.espncricinfo.com"+aTag["0"].attribs.href;
+    // console.log(allMatchesLink);
+     getAllMatches(allMatchesLink);
 }
 
 
