@@ -18,7 +18,8 @@
   },
   "homepage": "https://github.com/Sumant03/Lecture1#readme",
   "dependencies": {
-    "cheerio": "^1.0.0-rc.6",
+    "cheerio": "^1.0.0-rc.9",
+    "fs": "0.0.1-security",
     "puppeteer": "^9.1.1",
     "request": "^2.88.2",
     "xml": "^1.0.1"
