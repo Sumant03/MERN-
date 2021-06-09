@@ -3,6 +3,7 @@ let ticketsContainer = document.querySelector(".tickets-container");
 
 for(let i=0 ; i<allFilters.length ; i++){
     allFilters[i].addEventListener("click" , selectFilter);
+    console.log(i);
 }
 function selectFilter(e){
     let colour=e.target.classList[1];
