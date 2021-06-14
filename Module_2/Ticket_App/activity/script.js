@@ -210,6 +210,7 @@ function handleKeyPress(e) {
     };
     appendTicket(ticketInfoObject);
     closeModal.click();
+    //saveTicketToDb();
   }
 
   if(!isTextTyped) {
