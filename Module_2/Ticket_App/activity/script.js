@@ -134,7 +134,7 @@
 
 
 let allFilters = document.querySelectorAll(".filter");
-let ticketsContainer = document.querySelector(".tickets-container");
+
 
 let openModal = document.querySelector(".open-modal");
 let closeModal = document.querySelector(".close-modal");
@@ -210,7 +210,7 @@ function handleKeyPress(e) {
     };
     appendTicket(ticketInfoObject);
     closeModal.click();
-    //saveTicketToDb();
+    saveTicketToDb(ticketInfoObject);
   }
 
   if(!isTextTyped) {
@@ -219,20 +219,3 @@ function handleKeyPress(e) {
   }
 }
 
-function appendTicket(ticketInfoObject) {
-  let {ticketFilter , ticketValue} = ticketInfoObject;
-  let ticketDiv = document.createElement("div");
-  ticketDiv.classList.add("ticket");
-  ticketDiv.innerHTML = `<div class="ticket-header ${ticketFilter}"></div>
-  <div class="ticket-content">
-      <div class="ticket-info">
-          <div class="ticket-id">#e2nf5</div>
-          <div class="ticket-delete">
-              <i class="fas fa-trash"></i>
-          </div>
-      </div>
-      <div class="ticket-value">${ticketValue}</div>
-  </div>`;
-  
-  ticketsContainer.append(ticketDiv);
-}

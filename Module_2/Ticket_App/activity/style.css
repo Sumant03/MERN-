@@ -135,6 +135,7 @@ border :3px solid white;
 .tickets-container{
     display: flex;
      flex-wrap:wrap;
+    padding:30px;
 }
 
 .ticket {
@@ -142,6 +143,7 @@ border :3px solid white;
     height: 150px;
     width: 250px;
     border: 1px solid lightgray;
+     margin-left:100px;
 }
 
 .ticket-header {
@@ -163,8 +165,8 @@ border :3px solid white;
     justify-content: space-between;
 }
 
-.ticket-info div {
-}
+/* .ticket-info div {
+} */
 
 .ticket-value {
     height: 80%;
@@ -173,4 +175,18 @@ border :3px solid white;
     justify-content: center;
     align-items: center;
     word-break: break-all;
+}
+
+/* .lock{
+ background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Lock_font_awesome.svg/1024px-Lock_font_awesome.svg.png");
+} */
+.lock{
+  background-color: #0984e3;
+	/*background:lightgrey;*/
+
+	 background-image:url("https://isssource.com/wp-content/uploads/2020/08/081020smart-lock.png");
+	/*
+	background-repeat-x: no-repeat;
+	background-repeat-y: no-repeat;
+	*/
 }
