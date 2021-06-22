@@ -1,5 +1,6 @@
 let videoElement = document.querySelector("video");
 let recordButton=document.querySelector("#record");
+let capturePhoto=document.querySelector("#capture")
 let recordingState=false;
 let mediaRecorder;
 
@@ -40,7 +41,19 @@ let mediaStream= await navigator.mediaDevices.getUserMedia(constraint)
         recordingState=true;
        }
    })
+     capturePhoto.addEventListener("click",function(){
+         let canvas =document.querySelector("canvas");
+         canvas.width=640;
+         canvas.height=480;
+         let ctx=canvas.getContext("2d");
+     ctx.drawImage(videoElement,0,0);
 
+
+     let aTag = document.createElement("a");
+     aTag.download = `Video${Date.now()}.jpg`;
+     aTag.href = canvas.toDataURL("image/jpg");
+     aTag.click();
+        })
 
 
 })()
