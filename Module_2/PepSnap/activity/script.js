@@ -2,6 +2,15 @@ let videoElement = document.querySelector("video");
 let recordButton=document.querySelector(".inner-record");
 let capturePhoto=document.querySelector(".inner-capture")
 let recordingState=false;
+let filters=document.querySelectorAll(".filter");
+let zoomIn = document.querySelector(".zoomIn");
+let zoomOut = document.querySelector(".zoomOut");
+
+let minZoom = 1;
+let maxZoom = 3.1;
+let currentZoom = 1;
+
+let filterSelected="none";
 let mediaRecorder;
 
 (async function() {
@@ -64,3 +73,70 @@ let mediaStream= await navigator.mediaDevices.getUserMedia(constraint)
 
 
 })()
+// for (let i = 0; i < filters.length; i++) {
+//   filters[i].addEventListener("click", function (e) {
+//     let currentFilterSelected = e.target.style.backgroundColor;
+//     let filterDiv = document.createElement("div");
+//     filterDiv.classList.add("filter-div");
+  
+//     if(currentFilterSelected=filterSelected){
+//       return;
+//     }
+   
+//     if (document.querySelector(".filter-div")) {
+//       filterDiv.style.backgroundColor = currentFilterSelected;
+//             }
+//       else{
+//         let filterDiv = document.createElement("div");
+//     filterDiv.classList.add("filter-div");
+//     filterDiv.style.backgroundColor = currentFilterSelected;
+//       }      
+
+    
+//   });
+// }
+
+for (let i = 0; i < filters.length; i++) {
+  filters[i].addEventListener("click", function (e) {
+    let currentFilterSelected = e.target.style.backgroundColor;
+    if (currentFilterSelected == "") {
+      if (document.querySelector(".filter-div")) {
+        document.querySelector(".filter-div").remove();
+        filterSelected = "none";
+        return;
+      }
+    }
+
+    console.log(currentFilterSelected);
+    if (filterSelected == currentFilterSelected) {
+      return;
+    }
+
+    let filterDiv = document.createElement("div");
+    filterDiv.classList.add("filter-div");
+    filterDiv.style.backgroundColor = currentFilterSelected;
+
+    if (filterSelected == "none") {
+      document.body.append(filterDiv);
+    } else {
+      document.querySelector(".filter-div").remove();
+      document.body.append(filterDiv);
+    }
+    filterSelected = currentFilterSelected;
+  });
+}
+
+zoomIn.addEventListener("click",function(){
+  if(currentZoom+0.1>maxZoom){
+    return;
+  }
+  currentZoom=currentZoom+0.1;
+  videoElement.style.transform=`scale(${currentZoom})`;
+})
+zoomOut.addEventListener("click",function(){
+  if(currentZoom-0.1<minZoom){
+    return;
+  }
+  currentZoom=currentZoom-0.1;
+  videoElement.style.transform=`scale(${currentZoom})`;
+})
