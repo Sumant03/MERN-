@@ -42,7 +42,7 @@ let mediaStream= await navigator.mediaDevices.getUserMedia(constraint)
        }
    })
      capturePhoto.addEventListener("click",function(){
-         let canvas =document.querySelector("canvas");
+         let canvas =document.createElement("canvas");
          canvas.width=640;
          canvas.height=480;
          let ctx=canvas.getContext("2d");
