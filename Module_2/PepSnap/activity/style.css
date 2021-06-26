@@ -33,7 +33,7 @@ video{
     justify-content: center;
     align-items: center;
      /* background-color: aqua; */
-
+     z-index: 3;
 }
 #record{
     border: 5px solid white;
@@ -74,6 +74,7 @@ video{
     position: absolute;
     top:10vh;
     left:10vh;
+    z-index: 3;
 }
 
 .filter{

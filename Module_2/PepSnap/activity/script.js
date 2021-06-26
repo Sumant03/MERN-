@@ -62,8 +62,18 @@ let mediaStream= await navigator.mediaDevices.getUserMedia(constraint)
          canvas.width=640;
          canvas.height=480;
          let ctx=canvas.getContext("2d");
+         if(currentZoom!=1){
+           ctx.translate(canvas.width/2,canvas.height/2);
+           ctx.scale(currentZoom,currentZoom);
+           ctx.translate(-canvas.width/2,-canvas.height/2);
+         }
      ctx.drawImage(videoElement,0,0);
-
+       
+     if (filterSelected != "none") {
+      ctx.fillStyle = filterSelected;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+    
 
      let aTag = document.createElement("a");
      aTag.download = `Video${Date.now()}.jpg`;
