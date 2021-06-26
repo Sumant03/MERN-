@@ -1,6 +1,6 @@
 let videoElement = document.querySelector("video");
-let recordButton=document.querySelector("#record");
-let capturePhoto=document.querySelector("#capture")
+let recordButton=document.querySelector(".inner-record");
+let capturePhoto=document.querySelector(".inner-capture")
 let recordingState=false;
 let mediaRecorder;
 
@@ -33,16 +33,23 @@ let mediaStream= await navigator.mediaDevices.getUserMedia(constraint)
    recordButton.addEventListener("click",function(){
        if(recordingState){
            mediaRecorder.stop();
-           recordButton.innerHTML="Record Video";
+          //  recordButton.innerHTML="Record Video";
            recordingState=false;
+           recordButton.classList.remove("animate-record")
        }else{
         mediaRecorder.start();
-        recordButton.innerHTML="Recording";
+        // recordButton.innerHTML="Recording";
         recordingState=true;
+        recordButton.classList.add("animate-record")
        }
    })
      capturePhoto.addEventListener("click",function(){
-         let canvas =document.createElement("canvas");
+      capturePhoto.classList.add("animate-capture"); 
+      setTimeout(function(){
+   capturePhoto.classList.remove("animate-capture");
+      },1000)
+
+      let canvas =document.createElement("canvas");
          canvas.width=640;
          canvas.height=480;
          let ctx=canvas.getContext("2d");
