@@ -8,9 +8,9 @@
     height: 100px;
     /* background-color: antiquewhite; */
 }
-#canvas{
+/* #canvas{
     background-color: aquamarine;
-}
+} */
 .tools-content {
     height: 70%;
     width: 70%;
@@ -30,3 +30,44 @@
 width: 100%;
 height: 100%;
 }
+
+.sticky{
+    position:absolute;
+    top:200px;
+    left:300px;
+    height:200px;
+    width:250px;
+    /* background-color: antiquewhite; */
+    
+}
+.sticky-header{
+    height: 13%;
+    background-color: lightcyan;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.sticky-header div{
+    height: 70%;
+    width:7%;
+    margin-right:10px;
+    border-radius:50px;
+}
+.minimize{
+    background: lightskyblue;
+}
+.close{
+    background-color: lightcoral;
+}
+
+
+.sticky-content{
+    height:87%;
+    border-bottom-right-radius:20px ;
+    background-color: lightskyblue;
+    outline:none;
+    padding:10px;
+}
+
+
+

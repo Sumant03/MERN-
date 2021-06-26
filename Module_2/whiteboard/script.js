@@ -12,11 +12,15 @@ window.addEventListener("resize",function(){
 let ctx=canvas.getContext("2d");
 
 let linesDB=[];
+let redoLinesDB=[];
 let isPenDown=false;
 let line=[];
 
 canvas.addEventListener("mousedown",function(e){
- console.log("Mouse down");
+ if(redoLinesDB.length){
+     redoLinesDB=[];
+ }
+    console.log("Mouse down");
     isPenDown=true;
  let x=e.clientX;
  let y=e.clientY-100;
