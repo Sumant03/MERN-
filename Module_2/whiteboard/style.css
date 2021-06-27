@@ -2,7 +2,7 @@
     box-sizing: border-box;
     padding:0;
     margin: 0;
-    overflow: hidden;
+      /* overflow: hidden; */
 }
 .tools-container{
     height: 100px;
@@ -25,6 +25,7 @@
 .tool {
     height: 55%;
     width: 10%;
+    position: relative;
 }
 .tool img{
 width: 100%;
@@ -77,3 +78,56 @@ height: 100%;
     width: 100%;
 }
 
+/* .active-tool{
+
+} */
+.fade{
+    opacity: 0.5;
+}
+.tool-options{
+height: 100px;
+width: 100px;
+position: absolute;
+top:60px;
+display: flex;
+flex-direction: column;
+border-radius: 10px;
+justify-content: space-evenly;
+padding: 2px;
+background-color: aliceblue;
+}
+.hide{
+    display: none;
+}
+.pen-size input{
+    width: 100%;
+}
+.eraser-size input{
+    width: 100%;
+}
+.pen-colors{
+    display: flex;
+    justify-content: space-evenly;
+    width:100%;
+}
+.red{
+    background-color: red;
+}
+.blue{
+    background-color: blue;
+}
+.green{
+    background-color: greenyellow;
+}
+.yellow{
+    background-color: yellow;
+}
+.black{
+    background-color: black;
+}
+
+.pen-colors div{
+    height:15px;
+    width:14px;
+    border-radius: 50px;
+}
