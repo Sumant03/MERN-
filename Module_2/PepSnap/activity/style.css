@@ -106,6 +106,9 @@ video{
     font-size:1.5rem;
     color: aliceblue;
 }
+.gallery-btn{
+    color: aliceblue;
+}
 @keyframes scaleInScaleOut{
     0%{
         transform: scale(1);

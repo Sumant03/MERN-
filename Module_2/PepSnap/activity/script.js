@@ -5,6 +5,8 @@ let recordingState=false;
 let filters=document.querySelectorAll(".filter");
 let zoomIn = document.querySelector(".zoomIn");
 let zoomOut = document.querySelector(".zoomOut");
+let galleryBtn=document.querySelector(".gallery-btn");
+
 
 let minZoom = 1;
 let maxZoom = 3.1;
@@ -12,6 +14,17 @@ let currentZoom = 1;
 
 let filterSelected="none";
 let mediaRecorder;
+
+
+galleryBtn.addEventListener("click",function(){
+  window.location.assign("gallery.html");
+})
+
+
+
+
+
+
 
 (async function() {
 let constraint = { video: true };
@@ -30,11 +43,12 @@ let mediaStream= await navigator.mediaDevices.getUserMedia(constraint)
     // videoObject/imageObject => URL
     // aTag
 
-    let videoURL = URL.createObjectURL(videoObject);
-    let aTag = document.createElement("a");
-    aTag.download = `Video${Date.now()}.mp4`;
-    aTag.href = videoURL;
-    aTag.click();
+    // let videoURL = URL.createObjectURL(videoObject);
+    // let aTag = document.createElement("a");
+    // aTag.download = `Video${Date.now()}.mp4`;
+    // aTag.href = videoURL;
+    // aTag.click();
+    addMedia(videoObject,"video");
   };
   mediaRecorder.onstop = function () {
     console.log("Inside on stop");
@@ -75,10 +89,13 @@ let mediaStream= await navigator.mediaDevices.getUserMedia(constraint)
     }
     
 
-     let aTag = document.createElement("a");
-     aTag.download = `Video${Date.now()}.jpg`;
-     aTag.href = canvas.toDataURL("image/jpg");
-     aTag.click();
+    //  let aTag = document.createElement("a");
+    //  aTag.download = `Video${Date.now()}.jpg`;
+    //  aTag.href = canvas.toDataURL("image/jpg");
+    //  aTag.click();
+  let canvasURL=canvas.toDataURL("image.jpg");
+  addMedia(canvasURL,"photo");
+
         })
 
 
@@ -150,3 +167,15 @@ zoomOut.addEventListener("click",function(){
   currentZoom=currentZoom-0.1;
   videoElement.style.transform=`scale(${currentZoom})`;
 })
+
+
+function addMedia(mediaURL,mediaType){
+  let txnObject=db.transaction("Media","readwrite");
+  let mediaTable=txnObject.objectStore("Media");
+
+  mediaTable.add({mid:Date.now(),type:mediaType,url:mediaURL});
+console.log(txnObject);
+  txnObject.onerror=function(e){
+    console.log(e);
+  }
+}
