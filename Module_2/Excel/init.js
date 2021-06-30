@@ -1,5 +1,7 @@
 let cellsContainer = document.querySelector(".cells");
 
+
+
 function initCells() {
   let cellsContent = '<div class="top-left-cell"></div>';
 

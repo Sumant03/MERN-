@@ -42,6 +42,8 @@
     height: 25px;
     background: lightgray;
     width: 30px;
+    z-index: 3;
+    position: absolute;
 }
 
 .top-row {
@@ -49,6 +51,8 @@
     top: 0px;
     position: absolute;
     left: 30px;
+    z-index: 2;
+    background-color: white;
 }
 
 .top-row-cell {
@@ -77,3 +81,9 @@
     left: 30px;
 }
   
+.left-col{
+    position: absolute;
+    top:25px;
+    z-index: 2;
+    background-color: white;
+}
