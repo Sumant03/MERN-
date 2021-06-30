@@ -17,7 +17,7 @@ video{
     position:absolute;
     top:25vh;
     right:5vw;
-    height:300px;
+    height:500px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -28,7 +28,7 @@ video{
 
 .controls>div{
     width:50%;
-    height:25%;
+    height:15%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -107,6 +107,11 @@ video{
     color: aliceblue;
 }
 .gallery-btn{
+   background-color: black;
+   border-radius: 50%;
+   font-size:20px;
+   cursor:pointer;
+   border:2px solid white;
     color: aliceblue;
 }
 @keyframes scaleInScaleOut{

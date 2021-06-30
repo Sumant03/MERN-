@@ -5,9 +5,11 @@ let recordingState=false;
 let filters=document.querySelectorAll(".filter");
 let zoomIn = document.querySelector(".zoomIn");
 let zoomOut = document.querySelector(".zoomOut");
-let galleryBtn=document.querySelector(".gallery-btn");
+let galleryBtn = document.querySelector(".gallery-btn");
 
-
+galleryBtn.addEventListener("click" , function(){
+  window.location.assign("gallery.html");
+})
 let minZoom = 1;
 let maxZoom = 3.1;
 let currentZoom = 1;
@@ -16,9 +18,6 @@ let filterSelected="none";
 let mediaRecorder;
 
 
-galleryBtn.addEventListener("click",function(){
-  window.location.assign("gallery.html");
-})
 
 
 
@@ -97,7 +96,10 @@ let mediaStream= await navigator.mediaDevices.getUserMedia(constraint)
   addMedia(canvasURL,"photo");
 
         })
-
+   
+// galleryBtn.addEventListener("click",function(){
+//   window.location.assign("gallery.html");
+// })
 
 })()
 // for (let i = 0; i < filters.length; i++) {
