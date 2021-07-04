@@ -46,7 +46,7 @@ function initDB(){
     }
     db.push(row);
  }
- console.log(db);
+//  console.log(db);
 }
 
 
