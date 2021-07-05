@@ -24,6 +24,10 @@ let formula=e.target.value;
 
 if(formula){
   let cellObject=getCellObjectFromElement(lastSelectedCell);
+  if(formula!=cellObject.formula){
+    deleteFromula(cellObject);
+  }
+  
   let calculatedValue=solveFormula(formula,cellObject);
   
   
@@ -31,6 +35,8 @@ if(formula){
 
   cellObject.value=calculatedValue;
   cellObject.formula=formula;
+
+  updateChildrens(cellObject.childrens);
 }
 })
 
@@ -54,12 +60,36 @@ for(let i=0;i<allCells.length;i++){
   if(cellValueFromUI){
 
    let cellObject=getCellObjectFromElement(e.target);
+   if(cellObject.formula&&cellValueFromUI!=cellObject.value){
+     deleteFromula(cellObject);
+     formulaInput.value="";
+   }
+   
 
    cellObject.value=cellValueFromUI;
    updateChildrens(cellObject.childrens);
   }
   });
 }
+
+function deleteFromula(cellObject){
+  cellObject.formula="";
+
+  for(let i=0;i<cellObject.parents.length;i++){
+    let parentName=cellObject.parents[i];
+
+    let parentCellObject=getCellObjectFromName(parentName);
+    let updatedChildrens=parentCellObject.childrens.filter(function(childName){
+      if(childName==cellObject.name){
+        return false;
+      }
+      return true;
+    });
+    parentCellObject.childrens=updatedChildrens;
+  }
+  cellObject.parents=[];
+}
+
 function solveFormula(formula,selfCellObject) {
   // tip : implement infix evalutaion
   // ( A1 + A2 ) => ( 10 + 20 );
@@ -79,6 +109,7 @@ function solveFormula(formula,selfCellObject) {
       let value = parentCellObject.value;
       if(selfCellObject){
         parentCellObject.childrens.push(selfCellObject.name);
+        selfCellObject.parents.push(parentCellObject.name);
       }
       formula = formula.replace(fComp, value);
     }
@@ -89,11 +120,13 @@ function solveFormula(formula,selfCellObject) {
   return calculatedValue;
 }
 
+
 function getCellObjectFromElement(element) {
   let rowId = element.getAttribute("rowid");
   let colId = element.getAttribute("colid");
   return db[rowId][colId];
 }
+
 
 function getCellObjectFromName(name) {
   // A100
@@ -104,6 +137,7 @@ function getCellObjectFromName(name) {
   console.log(db[rowId][colId])
   return db[rowId][colId];
 }
+
 
 function updateChildrens(childrens) {
   console.log("childrens");
