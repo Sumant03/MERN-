@@ -23,6 +23,7 @@
 
 .sheets {
     background: aliceblue;
+    display: flex;
     height: 30px;
 }
 
@@ -87,4 +88,24 @@
     top:25px;
     z-index: 2;
     background-color: white;
+}
+.sheets-list{
+    display: flex;
+}
+.sheets-list>div{
+    width:70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-left: 1px solid;
+}
+
+.add-sheet{
+    width:70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.active-sheet {
+    background: white;
 }
