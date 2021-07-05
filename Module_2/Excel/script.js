@@ -40,6 +40,8 @@ if(formula){
 }
 })
 
+
+function addClickAndBlurEventOnCell(){
 for(let i=0;i<allCells.length;i++){
   allCells[i].addEventListener("click",function(e){
    let cellObject=getCellObjectFromElement(e.target);
@@ -71,6 +73,8 @@ for(let i=0;i<allCells.length;i++){
   }
   });
 }
+}
+addClickAndBlurEventOnCell();
 
 function deleteFromula(cellObject){
   cellObject.formula="";
