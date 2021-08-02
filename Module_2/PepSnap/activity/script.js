@@ -18,13 +18,6 @@ let filterSelected="none";
 let mediaRecorder;
 
 
-
-
-
-
-
-
-
 (async function() {
 let constraint = { video: true };
 let mediaStream= await navigator.mediaDevices.getUserMedia(constraint)

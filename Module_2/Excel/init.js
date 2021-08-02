@@ -1,6 +1,8 @@
 let cellsContainer = document.querySelector(".cells");
 let db;
 let sheetDB=[];
+let visitedCells;
+
 
 function initCells() {
   let cellsContent = '<div class="top-left-cell"></div>';
@@ -31,7 +33,7 @@ function initCells() {
 
 
 function initDB(){
- db=[];
+ let newDB=[];
 
  for(let i=0;i<100;i++){
    let row=[];
@@ -46,9 +48,13 @@ function initDB(){
      }
      row.push(cellObject);
     }
-    db.push(row);
+    newDB.push(row);
  }
- sheetDB.push(db);
+
+ let dbObject={db:newDB,visitedCells:[]}
+ sheetDB.push(dbObject);
+ db=newDB
+ visitedCells=dbObject.visitedCells;
 //  console.log(db);
 }
 

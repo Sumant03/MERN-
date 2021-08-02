@@ -35,6 +35,12 @@ if(formula){
 
   cellObject.value=calculatedValue;
   cellObject.formula=formula;
+ let  rowId=lastSelectedCell.getAttribute("rowid");
+ let  colId=lastSelectedCell.getAttribute("colid");
+  if(!cellObject.visited){
+    visitedCells.push({rowId,colId});
+    cellObject.visited=true;
+  }
 
   updateChildrens(cellObject.childrens);
 }
@@ -70,6 +76,14 @@ for(let i=0;i<allCells.length;i++){
 
    cellObject.value=cellValueFromUI;
    updateChildrens(cellObject.childrens);
+
+   let rowId=lastSelectedCell.getAttribute("rowid");
+   let colId=lastSelectedCell.getAttribute("colid");
+
+   if(!cellObject.visited){
+     visitedCells.push({rowId,colId});
+     cellObject.visited=true;
+   }
   }
   });
 }

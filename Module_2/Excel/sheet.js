@@ -27,10 +27,12 @@ function addSheet(){
     sheetDiv.addEventListener("click",function(){
         switchSheet(sheetDiv);
     });
-    initCells();
-   initDB();
-   attachEventListener();
+    // initCells();
+   cleanUI();
+    initDB();
    lastSelectedCell=undefined;
+//    attachEventListener();
+//    lastSelectedCell=undefined;
    
 
 
@@ -47,19 +49,26 @@ function switchSheet(currentSheet){
     document.querySelector(".active-sheet").classList.remove("active-sheet");
     currentSheet.classList.add("active-sheet");
 
+
+    cleanUI();
   let sid=currentSheet.getAttribute("sid");
   console.log(sid);
-  db=sheetDB[sid];
+  db=sheetDB[sid].db;
  console.log(db);
-  let lastCellIndex=0;
-  for(let i=0;i<db.length;i++){
-      let dbRow=db[i];
-      for(let j=0;j<dbRow.length;j++){
-          allCells[lastCellIndex].textContent=dbRow[j].value;
-          lastCellIndex++;
-      }
-  }
-
+ visitedCells=sheetDB[sid].visitedCells;
+//   let lastCellIndex=0;
+//   for(let i=0;i<db.length;i++){
+//       let dbRow=db[i];
+//       for(let j=0;j<dbRow.length;j++){
+//           allCells[lastCellIndex].textContent=dbRow[j].value;
+//           lastCellIndex++;
+//       }
+//   }
+for(let i=0;i<visitedCells.length;i++){
+    let {rowId,colId}=visitedCells[i];
+    let idx=Number(rowId)*100+Number(colId);
+    allCells[idx].textContent=db[rowId][colId].value;
+}
 
 }
 
@@ -72,4 +81,12 @@ function attachEventListener(){
     addClickAndBlurEventOnCell();
     
 
+}
+
+function cleanUI(){
+    for(let i=0;i<visitedCells.length;i++){
+        let {rowId,colId}=visitedCells[i];
+        let idx=Number(rowId)*100+ Number(colId);
+        allCells[idx].textContent="";
+    }  
 }
