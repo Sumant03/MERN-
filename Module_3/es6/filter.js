@@ -7,3 +7,5 @@ let filteredarr=a.filter(isEven);
 
 console.log(a);
 console.log(filteredarr);
+
+function myReduce()
