@@ -1,9 +1,23 @@
-let App = () => {
+import React from "react";
+
+class App extends React.Component{
+
+  state={tasks:["Make coffee","make notes","go to jog"]}
+
+render = () => {
   return (
-    <div>
-      <h1>This is our first react app.</h1>
-    </div>
-  );
+ <ul>
+{
+  this.state.tasks.map((ele)=>{
+    return <li>{ele}</li>
+  })
+}
+
+
+
+ </ul>
+ )
 };
+}
 
 export default App;
