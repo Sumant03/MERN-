@@ -1,4 +1,5 @@
 import React from "react";
+import "./App.css"
 
 class App extends React.Component{
 
@@ -7,36 +8,36 @@ class App extends React.Component{
 }
 
 render = () => {
+
   return (
-    <div>
-      <input type="text"  onChange={(e)=>{
-        this.setState({currentInput:e.currentTarget.value})
-      }} 
+   <div>
 
-     onKeyDown={
-       (e)=>{
-         if(e.key=="Enter"){
-           this.setState({
-             tasks:[...this.state.tasks,this.state.currentInput],
-             currentInput:"",
-           })
-         }
-       }
-     }
-
-
-      value={this.state.currentInput}/>
- <ul>
-{
-  this.state.tasks.map((ele)=>{
-    return <li>{ele}</li>
-  })
-}
+    <input 
+    
+    className="input-box"
+    type="text" 
+    onChange={(e)=>{this.setState({currentInput:e.currentTarget.value})}} 
+    onKeyDown={(e)=>{
+      if(e.key=="Enter"){
+      this.setState({
+      
+        tasks:[...this.state.tasks,this.state.currentInput],
+        currentInput:"",
+        
+      });
+    }
+    }} 
+    value={this.state.currentInput} 
+   />
 
 
+     <ul>  {this.state.tasks.map((ele)=>{
+         return <li>{ele}</li>
+       })}
+      </ul>
+       
 
- </ul>
- </div>
+   </div>
  )
 };
 }

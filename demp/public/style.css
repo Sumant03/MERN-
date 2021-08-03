@@ -1,0 +1,33 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+margin: 0;
+/* background-color: #ffff; */
+height: 100vh;
+background-color: #e5e5f7;
+background-color: #e5e5f7;
+opacity: 0.8;
+background-image: radial-gradient(#444cf7 0.5px, #e5e5f7 0.5px);
+background-size: 10px 10px;
+}
+.input-box{
+height: 5rem;
+display: block;
+width: 30rem;
+margin: auto;
+margin-top:2rem ;
+font-size: 1.5rem;
+margin-bottom:2rem ;
+}
+li{
+    list-style: none;
+    font-size: 2.2rem;
+    text-align: center;
+    text-shadow: 2px 5px 8px;
+    margin-bottom: 1.2rem;
+    font-size: 3rem;
+}
