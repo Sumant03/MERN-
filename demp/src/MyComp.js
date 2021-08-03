@@ -31,6 +31,14 @@ class MyComp extends React.Component{
         return (
             <div>
                 <h1>{this.state.someNumber}</h1>
+                <button onClick={()=>{
+                    // console.log("button was clicked");
+                    this.setState({someNumber:this.state.someNumber+1})
+                }}>I will dp something</button>
+                               <button onClick={()=>{
+                    // console.log("button was clicked");
+                    this.setState({someNumber:this.state.someNumber-1})
+                }}>I will dp something</button>
             </div>
         )
     }

@@ -8,6 +8,13 @@ import MyComp from './MyComp';
 
 ReactDOM.render(
   
-    <MyComp/>,  //ek component
+  <div>
+     <MyComp/>
+     <MyComp/>
+     <MyComp/>
+     <MyComp/>
+     <MyComp/>
+  </div> 
+  ,  //ek component
      document.getElementById('root')
               );
