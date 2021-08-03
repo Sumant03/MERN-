@@ -3,11 +3,11 @@ import ReactDOM from 'react-dom'; //render ogic
 
 
 //App is a component we have imported
-import App from './App';
+import MyComp from './MyComp';
 
 
 ReactDOM.render(
   
-    <App />,  //ek component
+    <MyComp/>,  //ek component
      document.getElementById('root')
               );
