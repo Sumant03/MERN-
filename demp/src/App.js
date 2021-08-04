@@ -12,7 +12,7 @@ class App extends React.Component{
 deletetask=(singleTask)=>{
   let curTaskArr=this.state.tasks;
   let filteredArr=curTaskArr.filter((el)=>{
-    return el!=singleTask
+    return el!==singleTask
   })
   this.setState({tasks:filteredArr})
 }
