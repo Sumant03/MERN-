@@ -5,3 +5,12 @@ input{
     outline: none;
     text-align: center;
 }
+
+button{
+    height: 2rem;
+    width: 4rem;
+    background-color: red;
+    color: wheat;
+    outline: none;
+    margin: 30px;
+}

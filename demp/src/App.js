@@ -32,7 +32,13 @@ render = () => {
 
 
      <ul>  {this.state.tasks.map((ele)=>{
-         return <li>{ele}</li>
+         return <li>{ele}<button  onClick={()=>{
+           let curTaskArr=this.state.tasks;
+           let filteredArr=curTaskArr.filter((el)=>{
+             return ele!=el
+           })
+           this.setState({tasks:filteredArr})
+         }}>Delete</button></li>
        })}
       </ul>
        
