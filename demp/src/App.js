@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css"
+import List from "./List";
 
 class App extends React.Component{
 
@@ -31,16 +32,7 @@ render = () => {
    />
 
 
-     <ul>  {this.state.tasks.map((ele)=>{
-         return <li>{ele}<button  onClick={()=>{
-           let curTaskArr=this.state.tasks;
-           let filteredArr=curTaskArr.filter((el)=>{
-             return ele!=el
-           })
-           this.setState({tasks:filteredArr})
-         }}>Delete</button></li>
-       })}
-      </ul>
+  <List   tasks={this.state.tasks}/>
        
 
    </div>
