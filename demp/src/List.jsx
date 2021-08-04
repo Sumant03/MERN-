@@ -3,13 +3,9 @@ let List=(props)=>{
 
     <ul>  {props.tasks.map((ele)=>{
         return <li>{ele}
-        {/* <button  onClick={()=>{
-          let curTaskArr=this.state.tasks;
-          let filteredArr=curTaskArr.filter((el)=>{
-            return ele!=el
-          })
-          this.setState({tasks:filteredArr})
-        }}>Delete</button> */}
+        <button  onClick={()=>{
+        props.deletetask(ele)
+        }}>Delete</button>
         </li>
       })}
      </ul>
