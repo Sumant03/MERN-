@@ -8,7 +8,7 @@ class App extends React.Component{
    genre:[]
  }
  
-  componentDidMount(){
+  hcomponentDidMount(){
   //It will get data here 
 
  let f=async ()=>{
