@@ -1,0 +1,10 @@
+.row{
+    display: flex;
+    justify-content: center;
+}
+.App{
+ padding: 50px;
+}
+body{
+    background-color: black;
+}

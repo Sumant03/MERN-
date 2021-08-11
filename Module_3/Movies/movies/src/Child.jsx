@@ -1,42 +1,46 @@
 import React from "react";
-import { ReactDOM } from "react";
+
 
 class Child extends React.Component{
-    constructor(props){
+    constructor(props) {
         super(props);
-        console.log("Constructor Called");
-        this.state={
-            on:false,
-        }
-    }
+        console.log("constructor was called");
+        this.state = {
+          on: false,
+        };
+      }
 
-    componentDidMount(){
+      componentDidMount() {
         console.log("component did mount was called");
-    }
-
-    componentDidUpdate(){
-        console.log("component updated");
-    }
-    componentWillUnmount(){
-        console.log("component is just deleting");
-    }
-
+      }
     
+      componentDidUpdate() {
+        console.log("component did update was called");
+      }
     
-    
-    render(){
-        console.log("render was called");
-        return(
-            <button 
-            onClick={()=>{if(this.state.on){
-                 this.setState({on:false})
-            }else{
-                this.setState({on:true})
-            }}
-        }>Click</button>
-        )
+      componentWillUnmount() {
+        console.log("component will umount was called");
+      }
+
+ render(){
+         return(
+             <div>
+             <button 
+             
+             onClick={()=>{
+                 if(this.state.on){
+                     this.setState({on:false});
+                 }else{
+                    this.setState({on:true});
+                 }
+             }}
+             
+             >
+         ClickMe
+             </button>
+          </div>
+         )
+     }
     }
-}
 
-
-export default Child;
+    export default Child;

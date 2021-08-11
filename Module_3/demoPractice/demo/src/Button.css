@@ -1,0 +1,11 @@
+
+.btn{
+    background-color: #5a5a5a;
+    width: 60px;
+    height: 4em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: azure;
+    
+}
