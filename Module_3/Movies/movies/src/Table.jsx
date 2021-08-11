@@ -37,7 +37,7 @@ let Table =(props)=>{
                 <td>{el.numberInStock}</td>
                 <td>{el.dailyRentalRate}</td>
                 
-                <td>Like</td>
+                <td key={el._id}>Like</td>
                 <td>
                     <button>Delete</button>
                 </td>
