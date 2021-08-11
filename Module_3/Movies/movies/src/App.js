@@ -50,7 +50,10 @@ class App extends React.Component{
 <div class="col-9">
 
 <Search/>
-<Table  genreData={this.state.genre} movieData={this.state.movies}/>
+<Table 
+ genreData={this.state.genre}
+  movieData={this.state.movies}
+  selectedFilter={this.state.selectedFilter}/>
 </div>
        
        </div>

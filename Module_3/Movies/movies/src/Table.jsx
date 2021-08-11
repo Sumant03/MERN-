@@ -2,6 +2,19 @@ import Pagintion from "./Pagintion";
 
 
 let Table =(props)=>{
+    console.log(props.movieData);
+   let allMovies=props.movieData;
+   let currFilter=props.selectedFilter;
+         
+   let filteredMovieArr=allMovies.filter((el) => {
+   
+   if(currFilter=="All Genre"){
+        return el;
+    }else if(el.genre.name==currFilter) {
+        return el;
+    }
+})
+   
     return(
    <>
      <table class="table m-2 p-2">
@@ -16,7 +29,22 @@ let Table =(props)=>{
           </tr>
         </thead>
         <tbody>
-       {}
+       {filteredMovieArr.map((el)=>{
+           return(
+               <tr key="el._id">
+                <td>{el.title}</td>
+                <td>{el.genre.name}</td>
+                <td>{el.numberInStock}</td>
+                <td>{el.dailyRentalRate}</td>
+                
+                <td>Like</td>
+                <td>
+                    <button>Delete</button>
+                </td>
+
+               </tr>
+           )
+       })}
           
         </tbody>
       </table>
