@@ -39,7 +39,7 @@ let Table =(props)=>{
                 
                 <td key={el._id}>Like</td>
                 <td>
-                    <button>Delete</button>
+                    <button   style={{backgroundColor:"red"}}>Delete</button>
                 </td>
 
                </tr>
