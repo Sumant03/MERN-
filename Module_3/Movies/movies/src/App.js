@@ -1,15 +1,27 @@
 import React from "react";
-import Child from "./Child"
+// import Child from "./Child"
+import Filter from "./Filter";
 
 class App extends React.Component{
- componentDidMount(){
+ state={
+   movies:[],
+   genre:[]
+ }
+ 
+  componentDidMount(){
   //It will get data here 
 
  let f=async ()=>{
-    let result=await fetch("/movies");
-    console.log(result);
-    let json=await result.json();
-    console.log(json);
+    let resultGenre=await fetch("/genre");
+    let resultMovies=await fetch("/movies");
+    
+    let moviesJson=await resultMovies.json();
+    let genreJson=await resultGenre.json();
+  
+
+    this.setState({
+    movies:moviesJson,
+    genre:genreJson})
  }
   f();
 
@@ -18,7 +30,9 @@ class App extends React.Component{
   render() {
     return (
       <div>
-       
+       <div className="row">
+       <Filter genreData={this.state.genre} />
+       </div>
         
       </div>
     );
