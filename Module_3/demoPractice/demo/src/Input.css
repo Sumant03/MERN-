@@ -1,0 +1,20 @@
+.Input{
+    background-color: white;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 10px;
+}
+
+.result{
+    height: 60px;
+    font-size: 24px;
+   
+}
+.text{
+    height: 18px;
+    font-size: small;
+   
+}

@@ -1,11 +1,16 @@
-import { prop } from "cheerio/lib/api/attributes"
+
 import  "./Button.css"
 
-let Button =({symbol})=>{
+let Button =({symbol,color,handleClick})=>{
    
     return (
-        <div className="btn">
+        
+        <div className="btn" 
+        onClick={()=> handleClick(symbol)}
+        style={{backgroundColor:color}}>
         {symbol}
+    
+          
         </div>
     )
 }

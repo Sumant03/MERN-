@@ -3,7 +3,11 @@
     justify-content: center;
 }
 .App{
- padding: 50px;
+  margin-left: 35%;
+  padding:30px;
+ width: 240px;
+ border:2px solid white;
+
 }
 body{
     background-color: black;
