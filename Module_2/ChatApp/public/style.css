@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    padding: 0px;
     margin: 0px;
 }
 
@@ -9,58 +10,83 @@
 }
 
 .left-view {
-    width: 30%;
+    width: 25%;
     background: aqua;
 }
 
 .right-view {
-    width: 70%;
-    background: black;
+    width: 75%;
+    /* background: black; */
+    height: 100%;
 }
-.joined-chat{
-background-color: cornflowerblue;
-margin: 20px;
-text-align: center;
-}
-.left{
-background-color: brown;
-margin: 20px;
-text-align: center;
-}
-.right-chat{
-
-}
-
-.right-chat>div{
-    background-color: greenyellow;
-    padding-top: 20px;
-    border-bottom: 1px solid ;
-    margin: 20px;
-    /* position: absolute; */
-    width: 40%;
-    /* top :300px; */
-    height: 50px;
-}
-.left-chat{
-
-margin-left: 60%;
-}
-.right-message{
-background-color: aquamarine;
-}
-.left-message{
+.chat-window{
+    height: 90%;
     background-color: antiquewhite;
-  padding-top: 20px;
-  border-bottom: 1px solid ;
-  margin: 20px;
-  /* position: absolute; */
-  width: 40%;
-  top:100px;
+}
+.chat-window>.chat{
+margin: 40px;
+}
 
+.chat{
+    color: white;
+    border-radius: 10px;
+    padding: 5px;
+    width: 250px;
+    /* clear: both; */
+    word-break: break-all;
+    min-height: 30px;
 }
-input{
-    height: 30px;
-    margin: auto;
+
+.left{
+    background: #2c3e50;
+    align-items: center;
+    float: right;
+}
+
+.right {
+    background: #9b59b6;
+    display: flex;
+    align-items: center;
+  padding: 5px;
+  margin: 40px;
+}
+
+.join{
+    background-color: #3498db;
+    
     width: 80%;
-    margin-left: 10%;
+    margin: auto;
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+.leave{
+    background: #e74c3c;
+     width: 80%;
+    margin: auto;
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.chat-input-box{
+    height: 10%;
+    background-color: #34495e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.chat-input-box input{
+    height: 60%;
+    width: 80%;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #2c3e50;
+    color: azure;
+}
+
+
+
