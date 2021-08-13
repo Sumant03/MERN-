@@ -1,5 +1,5 @@
 import Pagintion from "./Pagintion";
-
+import "./Table.css"
 
 let Table =(props)=>{
     console.log(props.movieData);
@@ -14,7 +14,9 @@ let Table =(props)=>{
         return el;
     }
 })
-   
+     
+let arrToBeUsedInTable = filteredMovieArr.slice(0, 4);
+
     return(
    <>
      <table class="table m-2 p-2">
@@ -29,7 +31,7 @@ let Table =(props)=>{
           </tr>
         </thead>
         <tbody>
-       {filteredMovieArr.map((el)=>{
+       {arrToBeUsedInTable.map((el)=>{
            return(
                <tr key="el._id">
                 <td>{el.title}</td>
@@ -37,9 +39,15 @@ let Table =(props)=>{
                 <td>{el.numberInStock}</td>
                 <td>{el.dailyRentalRate}</td>
                 
-                <td key={el._id}>Like</td>
+                <td onClick={()=>{
+                    props.toggleLike(el._id);
+                }}>
+               {el.liked?(<span class="material-icons-outlined">favorite</span>):(<span class="material-icons-outlined">favorite_border</span>)}
+
+
+                </td>
                 <td>
-                    <button   style={{backgroundColor:"red"}}>Delete</button>
+                    <button className="table-delete-btn" >Delete</button>
                 </td>
 
                </tr>

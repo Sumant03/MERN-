@@ -15,6 +15,25 @@ class App extends React.Component{
  setFilter=(filter)=>{
    this.setState({selectedFilter:filter})
  }
+
+  toggleLike=(id)=>{
+    let index=this.state.movies.findIndex((el)=>{
+      return el._id=id;
+    })
+
+   let currMovieArr=this.state.movies.map((el)=>el)
+
+    if(currMovieArr[index].liked){
+      currMovieArr[index].liked=false;
+    }else{
+      currMovieArr[index].liked=true;
+    }
+
+this.setState({movies:currMovieArr})
+    
+  }
+
+
  
   componentDidMount(){
   //It will get data here 
@@ -51,6 +70,7 @@ class App extends React.Component{
 
 <Search/>
 <Table 
+ toggleLike={this.toggleLike}
  genreData={this.state.genre}
   movieData={this.state.movies}
   selectedFilter={this.state.selectedFilter}/>
