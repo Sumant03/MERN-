@@ -5,17 +5,16 @@ import "./Table.css"
 class Table extends React.Component {
 constructor(props){
     super(props);
-
-       
-       
-       this.state={
+      this.state={
            currPage:1
        }
     
 }
 
 
-
+selectPage = (value) => {
+    this.setState({ currPage: value });
+  };
 
 
          
@@ -38,12 +37,25 @@ constructor(props){
              return el;
          }
      })
-          
-     let numberOfPages=Math.ceil(filteredMovieArr.length/4);
-    
-     let  arrToBeUsedInTable = filteredMovieArr.slice(0, 4);
 
-    console.log(this.arrToBeUsedInTable);
+  
+     filteredMovieArr=filteredMovieArr.filter((el) => {
+       let movieTitle=el.title;
+       movieTitle=movieTitle.toLowerCase();
+
+       let s=this.props.search.toLowerCase();
+
+       return movieTitle.includes(s);
+
+     })
+
+     let numberOfPages=Math.ceil(filteredMovieArr.length/4);
+     
+     let startIndex=(this.state.currPage-1)*4;
+     let endIndex=Math.min(filteredMovieArr.length,this.state.currPage*4);
+     let  arrToBeUsedInTable = filteredMovieArr.slice(startIndex,endIndex);
+
+    // console.log(this.arrToBeUsedInTable);
      return (
         <>
         <table class="table m-2 p-2">
@@ -88,7 +100,10 @@ constructor(props){
         </table>
          
   
-          <Pagintion numberOfPages={this.numberOfPages}/>
+          <Pagintion 
+          currPage={this.state.currPage}
+          selectPage={this.selectPage}
+           numberOfPages={numberOfPages}/>
   </>
      )
  }

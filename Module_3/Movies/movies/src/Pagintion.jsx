@@ -1,16 +1,32 @@
 let Pagintion =(props)=>{
-     console.log(props.numberOfPages);
-    return(
+    //  console.log(props.numberOfPages);
+   let arr=[];
+
+   for(let i=1;i<=props.numberOfPages;i++){
+     arr.push(i);
+   }
+   
+   
+     return(
         <>
         <nav  class="m-4">
         <ul class="pagination">
          
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item " aria-current="page">
-            <a class="page-link" href="#">2</a>
-          </li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-         
+      
+          {arr.map((el)=>{
+              return(
+                  <li
+                  
+             
+                  onClick={()=>{
+                    props.selectPage(el);
+                    
+                  }}
+                class={`page-item ${props.currPage==el?"active":""}`} >
+                <a class="page-link" >{el}</a>
+                </li>
+              )
+          })}
         </ul>
       </nav>
     </>

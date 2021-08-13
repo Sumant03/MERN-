@@ -3,14 +3,20 @@ import React from "react";
 import Filter from "./Filter";
 import Search from "./Search";
 import Table from "./Table";
-import Navbar from "./Navbar";
+// import Navbar from "./Navbar";
 
 class App extends React.Component{
  state={
    movies:[],
    genre:[],
-   selectedFilter:"All Genre"
- }
+   selectedFilter:"All Genre",
+   search:""
+   }
+
+   updateSearch=(el)=>{
+    this.setState({search:el})
+   }
+
 
  setFilter=(filter)=>{
    this.setState({selectedFilter:filter})
@@ -64,7 +70,7 @@ this.setState({movies:currMovieArr})
   render() {
     return (
       <div>
-        <Navbar/>
+        {/* <Navbar/> */}
        <div className="row">
        <Filter 
        genreData={this.state.genre} 
@@ -75,8 +81,12 @@ this.setState({movies:currMovieArr})
 
 <div class="col-9">
 
-<Search/>
+<Search
+search={this.search}
+updateSearch={this.updateSearch}
+movies={this.state.movies}/>
 <Table 
+search={this.state.search}
 deleteMovie={this.deleteMovie}
  toggleLike={this.toggleLike}
  genreData={this.state.genre}
