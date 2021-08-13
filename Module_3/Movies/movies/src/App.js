@@ -1,9 +1,15 @@
 import React from "react";
 // import Child from "./Child"
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
 import Filter from "./Filter";
 import Search from "./Search";
 import Table from "./Table";
-// import Navbar from "./Navbar";
+import Navbar from "./Navbar";
+import Customer from "./Customer";
+import Login from "./Login"
+import Rentail from "./Rentail";
+
 
 class App extends React.Component{
  state={
@@ -69,9 +75,14 @@ this.setState({movies:currMovieArr})
 
   render() {
     return (
-      <div>
-        {/* <Navbar/> */}
-       <div className="row">
+      <Router>
+        <div>
+        <Navbar/>
+
+        <Switch>
+    
+      <Route exact  path="/">
+      <div className="row">
        <Filter 
        genreData={this.state.genre} 
       selectedFilter={this.state.selectedFilter}
@@ -96,7 +107,26 @@ deleteMovie={this.deleteMovie}
        
        </div>
         
-      </div>
+      </Route>
+      
+      <Route exact path="/customer">
+       <Customer/>
+       </Route>
+      
+       <Route exact path="/rental">
+       <Rentail/>
+       </Route>
+      
+
+       <Route exact path="/login">
+       <Login/>
+       </Route>
+      
+
+    </Switch>
+    </div>
+
+    </Router>
     );
   }
 

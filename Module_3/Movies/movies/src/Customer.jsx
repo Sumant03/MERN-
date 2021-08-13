@@ -1,3 +1,9 @@
 let Customer =()=>{
-    return (<h1></h1>)
+    return ( <div className="row">
+    <h1>
+
+Customer
+</h1>
+</div>)
 }
+export default Customer;
