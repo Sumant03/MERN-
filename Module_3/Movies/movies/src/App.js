@@ -32,7 +32,14 @@ class App extends React.Component{
 this.setState({movies:currMovieArr})
     
   }
+  
+  deleteMovie=(id)=>{
+    let arr=this.state.movies.filter((el)=>{
+      return el._id!=id
+    })
 
+    this.setState({movies:arr})
+  }
 
  
   componentDidMount(){
@@ -70,6 +77,7 @@ this.setState({movies:currMovieArr})
 
 <Search/>
 <Table 
+deleteMovie={this.deleteMovie}
  toggleLike={this.toggleLike}
  genreData={this.state.genre}
   movieData={this.state.movies}
