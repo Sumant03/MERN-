@@ -18,7 +18,7 @@ class App extends React.Component{
 
   toggleLike=(id)=>{
     let index=this.state.movies.findIndex((el)=>{
-      return el._id=id;
+      return el._id==id;
     })
 
    let currMovieArr=this.state.movies.map((el)=>el)

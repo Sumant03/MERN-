@@ -25,6 +25,11 @@ constructor(props){
     let   allMovies=this.props.movieData;
     let currFilter=this.props.selectedFilter;
 
+   
+
+
+
+      
   let  filteredMovieArr=allMovies.filter((el) => {
    
         if(currFilter=="All Genre"){
@@ -34,7 +39,9 @@ constructor(props){
          }
      })
           
-    let  arrToBeUsedInTable = filteredMovieArr.slice(0, 4);
+     let numberOfPages=Math.ceil(filteredMovieArr.length/4);
+    
+     let  arrToBeUsedInTable = filteredMovieArr.slice(0, 4);
 
     console.log(this.arrToBeUsedInTable);
      return (
@@ -81,7 +88,7 @@ constructor(props){
         </table>
          
   
-          <Pagintion/>
+          <Pagintion numberOfPages={this.numberOfPages}/>
   </>
      )
  }
