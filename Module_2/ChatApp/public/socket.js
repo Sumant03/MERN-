@@ -1,5 +1,5 @@
 
-let socket=io();
+
 socket.emit("user-connected",name);
 
 socket.on("user-joined",function(name){
@@ -17,3 +17,18 @@ socket.on("user-leave",function(name){
     chatJoined.innerHTML=name +" leaved the chat"
     document.querySelector(".chat-window").append(chatJoined)
 })
+
+socket.on("append-chat",function({name,chat}){
+    let chatRight = document.createElement("div");
+    chatRight.classList.add("chat");
+    chatRight.classList.add("left");
+    chatRight.innerHTML = name +" : "+ chat;
+    console.log("left chat");
+    chatWindow.append(chatRight);
+})
+
+
+
+
+
+

@@ -17,6 +17,18 @@ io.on("connection",function(socket){
 
         socket.broadcast.emit("user-joined",name)
     })
+
+    socket.on("chat-append" , function(chat){
+        let name;
+        for(let i=0 ; i<user.length ; i++){
+          if(user[i].id == socket.id){
+            name = user[i].name;
+            break;
+          }
+        }
+        socket.broadcast.emit("append-chat" , {name , chat});
+      })
+
     socket.on("disconnect",function(){
       let disconnectedUser;
         let userArr=  user.filter((userObject)=>{
@@ -34,6 +46,7 @@ io.on("connection",function(socket){
     user=userArr;
     socket.broadcast.emit("user-leave",disconnectedUser.name);
     }) 
+
     
 })
 

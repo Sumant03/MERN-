@@ -7,9 +7,12 @@ chatInputBox.addEventListener("keypress", function (e) {
     let chatRight = document.createElement("div");
     chatRight.classList.add("chat");
     chatRight.classList.add("right");
-    chatRight.innerHTML = chatInputBox.value;
+    chatRight.innerHTML = "Me" +" : "+ chatInputBox.value;
     chatWindow.append(chatRight);
-    chatInputBox.value = "";
+    console.log("right chat");
+      socket.emit("chat-append",chatInputBox.value)
+      chatInputBox.value = "";
   }
+
 });
 
