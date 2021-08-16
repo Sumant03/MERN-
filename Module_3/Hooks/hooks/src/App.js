@@ -1,6 +1,7 @@
 
 
 import {useState,useEffect, useDebugValue} from "react";
+import { render } from "react-dom";
 
 function App() {
 
@@ -17,19 +18,32 @@ function App() {
   // you have passed a function and an empty arr
   // then useEffect calls the passed function only once, after first render 
   // so it works like componentDidMount
-  // useEffect(() => {
-  //   console.log("use effect was called");
-  // }, []);
-
-
+  
+  
   useEffect(() => {
-    console.log(" case 2 useEffect was called");
- 
-  return(
-    ()=>console.log("clean up function")
-  )
+    console.log("use effect was called");
+   
+    
+   return()=>{
+    console.log("clean up function")
+  }
 
-  });
+  }, []);
+
+
+
+
+  // useEffect(() => {
+  //   console.log(" case 2 useEffect was called");
+ 
+     
+  // })
+  // //clean up function
+  // return(
+  //   ()=>console.log("clean up function")
+  // )
+
+  // });
 
 //  useEffect(()=>{
 //   let arr=process.split("i");
