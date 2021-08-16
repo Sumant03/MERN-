@@ -1,13 +1,13 @@
 
 
-import {useState,useEffect} from "react";
+import {useState,useEffect, useDebugValue} from "react";
 
 function App() {
 
   console.log("render the function")
    
   let[ count,setCount]=useState(0);
-
+  let [process,setProcess]=useState("running");
     // useEffect ek hook hai to functional component ke ander hi use hota hai
   //it takes 2 arguments=> function, arr [optional]
   // based on you have passed the arr or not
@@ -24,9 +24,17 @@ function App() {
 
   useEffect(() => {
     console.log(" case 2 useEffect was called");
+ 
+  return(
+    ()=>console.log("clean up function")
+  )
+
   });
 
-
+//  useEffect(()=>{
+//   let arr=process.split("i");
+//   console.log(arr);
+//  },[process]);
 
 
 
@@ -40,7 +48,11 @@ function App() {
        <h1>{count}</h1>
       </div>
        <button onClick={()=>setCount(count-1)}>-</button>
-    
+
+        <p>{process}</p>
+         <button onClick={()=>{
+           setProcess("stop");
+         }}>Kill process</button>
     </div>
   )
 }
