@@ -1,22 +1,22 @@
 
-import D from "./D";
+// import D from "./D";
 
 
 
-let C=()=> {
+// let C=()=> {
 
 
 
 
-  return (
-    <div className="App">
+//   return (
+//     <div className="App">
       
-       <D/>
+//        <D/>
       
       
 
-    </div>
-  );
-}
+//     </div>
+//   );
+// }
 
-export default C;
+// export default C;

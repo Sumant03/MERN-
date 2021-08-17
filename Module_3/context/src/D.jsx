@@ -1,28 +1,28 @@
-import {countContext} from "./App"
-import {useContext} from "react"
+// import {countContext} from "./App"
+// import {useContext} from "react"
 
 
-let  D=()=> {
+// let  D=()=> {
 
-let valueOfObject=useContext(countContext);
+// let valueOfObject=useContext(countContext);
 
- return (
-    <div className="App">
+//  return (
+//     <div className="App">
      
 
-     <button onClick={()=>{
-         valueOfObject.setCount(valueOfObject.count+1);
-     }}>
-    +
-     </button>
-     <p>{valueOfObject.count}</p>
-     <button onClick={()=>{
-         valueOfObject.setCount(valueOfObject.count+1);
-     }}>
-    +
-     </button>
-    </div>
-  );
-}
+//      <button onClick={()=>{
+//          valueOfObject.setCount(valueOfObject.count+1);
+//      }}>
+//     +
+//      </button>
+//      <p>{valueOfObject.count}</p>
+//      <button onClick={()=>{
+//          valueOfObject.setCount(valueOfObject.count+1);
+//      }}>
+//     +
+//      </button>
+//     </div>
+//   );
+// }
 
-export default D;
+// export default D;

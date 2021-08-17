@@ -1,18 +1,18 @@
 
-import C from "./C";
+// import C from "./C";
 
 
 
-let B=()=> {
+// let B=()=> {
 
 
 
 
-  return (
-    <div className="App">
-       <C/>
-    </div>
-  );
-}
+//   return (
+//     <div className="App">
+//        <C/>
+//     </div>
+//   );
+// }
 
-export default B;
+// export default B;
