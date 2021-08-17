@@ -17,10 +17,9 @@ let valueOfObject=useContext(countContext);
      </button>
      <p>{valueOfObject.count}</p>
      <button onClick={()=>{
-         valueOfObject.setCount(valueOfObject.count-1);
+         valueOfObject.setCount(valueOfObject.count+1);
      }}>
-    -
-
+    +
      </button>
     </div>
   );
