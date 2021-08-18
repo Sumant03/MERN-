@@ -1,26 +1,26 @@
-
-
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import React from "react";
-import Home from "./Home"
+import Home from "./component/Home";
+import Login from "./component/Login"
 import {Link} from "react-router-dom";
-
+import AuthProvider from "./AuthProvider"
 
 let App=()=>{
   return (
-    <Router>
+
+  <AuthProvider>
+  <Router>
         <div>
         
 
         <Switch>
     
-      <Route exact  path="/">
+      <Route exact  path="/home">
 
-        <h3><Link class="nav-link" to="/home">Home</Link></h3>
-        <div><h1>Login with Google</h1></div>  
+        
       </Route>
       
-      <Route exact path="/home">
+      <Route exact path="/login">
        <Home/>
        </Route>
      
@@ -29,6 +29,7 @@ let App=()=>{
     </div>
 
     </Router>
+    </AuthProvider>
   )
 }
 
