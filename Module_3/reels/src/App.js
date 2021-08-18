@@ -11,16 +11,16 @@ let App=()=>{
   useEffect(()=>{
     
 
-    async function f(){
-      let querySnapshot=await firestore.collection("user").get();
+    // async function f(){
+    //   let querySnapshot=await firestore.collection("user").get();
       
-      for(let i=0;i<querySnapshot.docs.length;i++){
-        console.log(querySnapshot.docs[i].data);
-      }
+    //   for(let i=0;i<querySnapshot.docs.length;i++){
+    //     console.log(querySnapshot.docs[i].data);
+    //   }
 
 
-    }
-    f()
+    // }
+    // f()
 
   //    let f=async ()=>{
        
@@ -48,7 +48,7 @@ let App=()=>{
 
 
 
-  {/* <AuthProvider>
+  <AuthProvider>
   <Router>
       
         
@@ -68,7 +68,7 @@ let App=()=>{
   
 
     </Router>
-    </AuthProvider> */}
+    </AuthProvider>
 
     </>
   )

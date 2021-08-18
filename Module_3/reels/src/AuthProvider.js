@@ -1,5 +1,5 @@
 import {createContext,useEffect,useState} from "react";
-import {auth} from "./firebase";
+import {auth,firestore} from "./firebase";
 
 export const authContext=createContext();
 
@@ -13,11 +13,28 @@ let [loading,setLoading]=useState(true);
 
 useEffect(()=>{
   
-    let unsub = auth.onAuthStateChanged((user) => {
+    let unsub = auth.onAuthStateChanged(async (user) => {
 
         if (user) {
           let { displayName, email, uid, photoURL } = user;
-  
+          
+
+          //it will egt the reference of the user with the uid same as passed uid
+          let docRef=firestore.collection("user").doc(uid);
+
+          let documentSnapshot=await docRef.get();
+
+          if(!documentSnapshot.exists){
+           docRef.set({
+           displayName,
+           email,
+           photoURL
+           })
+          }
+
+
+          
+
           setUser({ displayName, email, uid, photoURL });
         } else {
           setUser(null);
