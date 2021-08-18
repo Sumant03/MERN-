@@ -1,6 +1,6 @@
 import firebase  from "firebase/app";
 import config from "./config.json"
-// import "firebase/firestore";
+import "firebase/firestore";
 
 import "firebase/auth"
 
@@ -17,3 +17,5 @@ export const signInWithGoogle=()=>{
 }
 
 export default firebase;
+
+export const firestore=firebase.firestore();
