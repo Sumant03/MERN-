@@ -9,7 +9,7 @@ let App=()=>{
    <>
   <AuthProvider>
   <Router>
-        <div>
+      
         
 
         <Switch>
@@ -24,7 +24,7 @@ let App=()=>{
      
 
     </Switch>
-    </div>
+  
 
     </Router>
     </AuthProvider>
