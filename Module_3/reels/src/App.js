@@ -11,15 +11,16 @@ let App=()=>{
   useEffect(()=>{
     
 
-    // async function f(){
-    //   let querySnapshot=await firestore.collection("users").get();
+    async function f(){
+      let querySnapshot=await firestore.collection("user").get();
       
-    //   for(let i=0;i<querySnapshot.docs.length;i++){
-    //     console.log(querySnapshot.docs[i].data);
-    //   }
+      for(let i=0;i<querySnapshot.docs.length;i++){
+        console.log(querySnapshot.docs[i].data);
+      }
 
 
-    // }
+    }
+    f()
 
   //    let f=async ()=>{
        
