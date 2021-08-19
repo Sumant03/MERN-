@@ -5,7 +5,7 @@ export const authContext=createContext();
 
 let AuthProvider =(props)=>{
 
-console.log(props);
+// console.log(props);
 
 let [user,setUser]=useState(null);
 let [loading,setLoading]=useState(true);

@@ -4,7 +4,7 @@ import Home from "./component/Home";
 import Login from "./component/Login"
 import AuthProvider from "./AuthProvider"
 import {useEffect} from "react";
-import { firestore } from "./firebase";
+
 
 
 let App=()=>{

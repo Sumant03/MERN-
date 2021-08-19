@@ -14,9 +14,9 @@ let Home =()=>{
 
         <div className="video-container">
         <VideoCard/>
-        {/* <VideoCard/>
         <VideoCard/>
-        <VideoCard/> */}
+        <VideoCard/>
+        <VideoCard/>
         </div>
         
         
@@ -33,7 +33,7 @@ let Home =()=>{
           
         let videoObj=  e.currentTarget.files[0];
         let {name,size,type}=videoObj;
-
+  console.log(videoObj);
         size=size/1000000;
         if(size>10){
             alert("file size exceeds 10mb ");
@@ -41,15 +41,22 @@ let Home =()=>{
         }
         
         type=type.split("/");
-        console.log(type);
+        console.log(type[0]);
 
 
-        if(type!=="video"){
+        if(type[0]!=="image"){
             alert("Please upload a video ");
             return;
         }
-        let upload =storage.ref(`/posts/${user.uid}/${Date.now()+"-"+name}`).put()
-           }}/>
+        let upload =storage.ref(`/posts/${user.uid}/${Date.now()+"-"+name}`).put(videoObj)
+
+         upload.on("state-changed",null,null,()=>{
+           upload.snapshot.ref.getDownloadURL().then((url)=>{
+                 console.log(url);
+           })
+         })
+
+}}/>
 
         
         </>
