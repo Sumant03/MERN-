@@ -1,0 +1,33 @@
+.preview-container{
+    display: flex;
+    width: 100vw;
+    height: 93vh;
+}
+.preview-img-container img{
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+}
+.preview-img-container,.preview-listing{
+width: 50%;
+height: 100%;
+}
+
+.preview-listing h2{
+    padding-top:4rem ;
+    text-align: center;
+}
+.preview-listing p{
+    text-align: justify;
+    padding: 20px;
+}
+.preview-listing button{
+    display: block;
+    margin: auto;
+    padding :10px 20px;
+    border: none;
+    border-radius: 10px;
+    color: wheat;
+    background-color: #e67e22;
+    font-size: 1.2rem;
+}

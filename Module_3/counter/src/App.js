@@ -4,11 +4,11 @@ import './App.css';
 
 let App=()=>{
   let state=useSelector(function(state){
-    return state;
+    return state.count;
   })
 
 
-let dispatch=useDispatch()
+let dispatch=useDispatch();
 
 
   return (
