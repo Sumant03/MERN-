@@ -1,6 +1,6 @@
 import firebase from "firebase/app";
-import auth from "firebase/auth";
-import firestore from "firebase/firestore";
+import "firebase/auth";
+import "firebase/firestore";
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {

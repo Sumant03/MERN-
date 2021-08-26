@@ -6,23 +6,36 @@ import Home from "./components/home";
 import Login from "./components/login"
 import Navbar from "./components/navbar"
 import Signup from "./components/signup"
+import {auth,firestore} from "./firebase"
+import {useCreator} from "./redux/actions/userActions"
 
 
 let App=()=> {
   let dispatch=useDispatch();
 
   useEffect(()=>{
-    let unsub= auth
-  })
+    let unsub= auth.onAuthStateChanged(async(user)=>{
+       dispatch(useCreator(user));
+       if(user){
+         let {uid,email}=user;
+         let docRef=firestore.collection("users").doc(uid);
 
+         let doc= await docRef.get();
+         if(!doc.exists){
+           docRef.set({
+             email,
+           })
+         }
 
+       }
 
+    })
 
-
-
-
-
-
+    return ()=>{
+      unsub();
+    }
+    
+  },[]);
 
   return (
     <>
