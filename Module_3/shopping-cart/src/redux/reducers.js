@@ -30,19 +30,19 @@ let initialState = [
 export const reducer=(state=initialState,action)=>{
 
     let cp=[];
-   let idx=-1;
+   let id=-1;
 switch(action.type){
    
     case ADD_TO_CART:
     cp=state.map((el)=>el)   
-     idx=action.payload;
-    cp[idx]=cp[idx].qty+1;
+     id=action.payload;
+    cp[id].qty=cp[id].qty+1;
     return cp ; 
 
     case REMOVE_FROM_CART:
      cp=state.map((el)=>el)   
-    idx=action.payload;
-    cp[idx]=cp[idx].qty-1;
+    id=action.payload;
+    cp[id].qty=cp[id].qty-1;
     return cp ;
 
     default :

@@ -1,14 +1,19 @@
+import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import "./preview.css"
 
 let Preview = () => {
-    return <>
+    let state=useSelector((state)=>state);
+    let {id}=useParams();
+    let obj=state[id];
+return <>
     <div className="preview-container">
          
          <div className="preview-img-container">
-             <img  src="https://i.shgcdn.com/d28da852-3c05-408e-bde3-4aeb881e1a08/-/format/auto/-/preview/3000x3000/-/quality/lighter/"></img>
+             <img  src={obj.img}></img>
          </div>
          <div className="preview-listing">
-             <h2>Title</h2>
+             <h2>{obj.name}</h2>
                  <p>Lorem ipsum, dolor sit amet consectetur adipisicing 
                      elit. Quod praesentium inventore ipsa veritatis 
                      numquam placeat? Nulla repellat aliquam doloribus

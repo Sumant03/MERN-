@@ -1,16 +1,27 @@
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { addCreator } from "../redux/actions";
 import "./product.css";
 
-let Product = () => {
+let Product = (props) => {
+  console.log(props);
+  let history=useHistory();
+  let dispatch=useDispatch();
   return (
     <div className="product-card">
       <div className="product-img">
         <img
-          src="https://i.shgcdn.com/d28da852-3c05-408e-bde3-4aeb881e1a08/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
-          alt=""
+          src={props.data.img}
+          onClick={()=>{
+            history.push(`/preview/${props.data.id}`)
+          }}
         />
       </div>
       <div className="product-btn">
-        <button>Add to Cart</button>
+        <button
+         onClick={()=>{
+          dispatch(addCreator(props.data.id));
+        }}>Add to Cart</button>
       </div>
     </div>
   );
