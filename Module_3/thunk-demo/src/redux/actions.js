@@ -19,13 +19,11 @@ export const failureCreator=(err)=>{
 export const fetchUser=()=>{
     return(dispatch)=>{
       dispatch(fetchCreator());
-
-
-      fetch("https://jsonplaceholder.typicode.com/users")
-      .then((res)=>{
+      console.log("dispatched");
+      console.log("Hi");
+      fetch("https://jsonplaceholder.typicode.com/users").then((res)=>{
           return res.json();
-      })
-      .then((json)=>{
+      }).then((json)=>{
         dispatch(successCreator(json));
       })
       .catch((err)=>{

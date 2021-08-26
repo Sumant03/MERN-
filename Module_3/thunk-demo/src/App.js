@@ -1,4 +1,4 @@
-
+import { fetchUser } from './redux/actions';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import './App.css';
