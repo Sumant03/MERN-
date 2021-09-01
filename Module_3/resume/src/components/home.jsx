@@ -1,19 +1,15 @@
 import {useSelector} from "react-redux";
 import { auth } from "../firebase";
-import {Redirect} from "react-router-dom"
+import {Redirect, useHistory} from "react-router-dom"
 
 let Home =()=>{
-    let user=useSelector((state)=>state);
-    return(
-        <>
-        {user?" Home ":<Redirect to="/login"/>}
-
-        <button onClick={()=>{
-            auth.signOut();
-        }}>
-         Logout
-        </button>
-        </>
-    )
+    let history=useHistory("");
+ return(
+     <div>
+      Hi
+     <button className="btn btn-primary" onClick={()=>{history.push("/login")}}>Logout</button>
+     </div>
+ )
+    
 }
 export default Home;

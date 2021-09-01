@@ -9,8 +9,9 @@ function App() {
   let dispatch=useDispatch();
   return (
     <>
-    <button onClick={()=>{
-      dispatch(fetchUser)
+    <button
+     onClick={()=>{
+      dispatch(fetchUser())
     }}>Click Me</button>
     </>
   );

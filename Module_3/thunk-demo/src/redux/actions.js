@@ -22,12 +22,16 @@ export const fetchUser=()=>{
       console.log("dispatched");
       console.log("Hi");
       fetch("https://jsonplaceholder.typicode.com/users").then((res)=>{
-          return res.json();
+        console.log("fetching data");  
+      return res.json();
       }).then((json)=>{
+          
         dispatch(successCreator(json));
+        console.log("in success");
       })
       .catch((err)=>{
         dispatch(failureCreator(err));
+        console.log("in error");
       })
 
       

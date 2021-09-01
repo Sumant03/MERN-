@@ -1,65 +1,39 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { BrowserRouter as Router,Switch,Route } from 'react-router-dom';
-import './App.css';
-import Home from "./components/home";
+import {BrowserRouter as Router,Route,Switch } from  "react-router-dom";
+import Navbar from './components/navbar';
 import Login from "./components/login"
-import Navbar from "./components/navbar"
-import Signup from "./components/signup"
-import {auth,firestore} from "./firebase"
-import {useCreator} from "./redux/actions/userActions"
+import Home from './components/home';
+import SignUp from './components/signup';
+let App=()=>{
+  return(
+    <div>
+     
+  <Router>
+ <Navbar/>
+ 
+ <Switch>
+
+  <Route exact path="/login">
+  <Login/>
+
+  </Route>
+  <Route exact path="/signup">
+
+ <SignUp/>
+</Route>
+<Route exact path="/home">
+  <Home/>
+
+</Route>
+
+ </Switch>
 
 
-let App=()=> {
-  let dispatch=useDispatch();
+  </Router>
 
-  useEffect(()=>{
-    let unsub= auth.onAuthStateChanged(async(user)=>{
-       dispatch(useCreator(user));
-       if(user){
-         let {uid,email}=user;
-         let docRef=firestore.collection("users").doc(uid);
-
-         let doc= await docRef.get();
-         if(!doc.exists){
-           docRef.set({
-             email,
-           })
-         }
-
-       }
-
-    })
-
-    return ()=>{
-      unsub();
-    }
-    
-  },[]);
-
-  return (
-    <>
-    <Router>
-  <Navbar/>
-    <Switch>
-      
-      <Route path="/login">
-      <Login/>
-      </Route>
-      <Route path="/signup">
-       <Signup/>
-      </Route>
-      <Route path ="/">
-      <Home/>
-      </Route>
-
-
-    </Switch>
-
-
-    </Router>
-    </>
-  );
+    </div>
+  )
 }
+
 
 export default App;
