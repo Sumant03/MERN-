@@ -6,7 +6,7 @@ let Home =()=>{
     let history=useHistory("");
  return(
      <div>
-      Hi
+      Hi there 
      <button className="btn btn-primary" onClick={()=>{history.push("/login")}}>Logout</button>
      </div>
  )
