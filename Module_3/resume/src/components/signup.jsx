@@ -4,7 +4,7 @@ import { Redirect, useHistory } from "react-router-dom";
 import { auth } from "../firebase";
 
 let SignUp = () => {
-  let user=useSelector((state)=>state);
+  let user=useSelector((state)=>state.user);
 
  
 
@@ -42,10 +42,10 @@ let SignUp = () => {
     <label class="form-check-label" for="exampleCheck1">Check me out</label>
   </div>
   <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <label for="exampleInputPassword2" class="form-label">Password</label>
     <input type="password" 
     class="form-control" 
-    id="exampleInputPassword1"
+    id="exampleInputPassword2"
     value={confirmPassword}
     onChange={(e)=>{setConfirmPassword(e.currentTarget.value)}}/>
   </div>
@@ -57,7 +57,7 @@ let SignUp = () => {
     if(password===confirmPassword){
       auth.createUserWithEmailAndPassword(email, password);
   }}}
-
+  
   >SignUp</button></div>
 
 <br />

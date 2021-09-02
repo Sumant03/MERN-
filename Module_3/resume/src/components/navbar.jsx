@@ -1,7 +1,7 @@
 import { useHistory } from "react-router-dom";
 
 let Navbar = () => {
-  let history=useHistory("");
+  let history=useHistory();
     return (
       <>
         <nav class="navbar navbar-dark bg-dark">

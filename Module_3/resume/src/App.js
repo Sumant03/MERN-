@@ -7,6 +7,7 @@ import SignUp from './components/signup';
 import { useDispatch } from 'react-redux';
 import {auth,firestore} from "./firebase"
 import {userCreator} from  "./redux/actions/userActions"
+import PersonalData from "./components/personalData"
 let App=()=>{
 let dispatch=useDispatch();
 
@@ -41,6 +42,10 @@ return()=> unsub();
  
  <Switch>
 
+ <Route  path="/personal">
+  <PersonalData/>
+
+  </Route>
   <Route  path="/login">
   <Login/>
 

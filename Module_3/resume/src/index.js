@@ -4,9 +4,9 @@ import './index.css';
 import App from './App';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import userReducer from "./redux/reducers/userReducer"
+import rootReducer from "./redux/rootReducer"
 
-let myStore=createStore(userReducer);
+let myStore=createStore(rootReducer);
 
 
 ReactDOM.render(
