@@ -4,7 +4,35 @@ import Navbar from './components/navbar';
 import Login from "./components/login"
 import Home from './components/home';
 import SignUp from './components/signup';
+import { useDispatch } from 'react-redux';
+import {auth,firestore} from "./firebase"
+import {userCreator} from  "./redux/actions/userActions"
 let App=()=>{
+let dispatch=useDispatch();
+
+useEffect(()=>{
+
+let unsub=auth.onAuthStateChanged(async (user)=>{
+
+  dispatch(userCreator(user));
+  if(user){
+    let {uid,email}=user;
+    let docRef=firestore.collection("users").doc(uid)
+    let doc=await docRef.get();
+    if(!doc.exists){
+      docRef.set({email,})
+    }
+  }
+console.log(user)
+})
+
+return()=> unsub();
+
+},[])
+
+
+
+
   return(
     <div>
      
@@ -13,15 +41,15 @@ let App=()=>{
  
  <Switch>
 
-  <Route exact path="/login">
+  <Route  path="/login">
   <Login/>
 
   </Route>
-  <Route exact path="/signup">
+  <Route  path="/signup">
 
  <SignUp/>
 </Route>
-<Route exact path="/home">
+<Route  path="/">
   <Home/>
 
 </Route>

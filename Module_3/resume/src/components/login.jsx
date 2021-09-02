@@ -1,10 +1,14 @@
-import { useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { Redirect, useHistory } from "react-router-dom";
 import { auth } from "../firebase";
 
 let Login = () => {
-   let history = useHistory()
+  let user=useSelector((state)=>state)
+   let history = useHistory();
+
   return (
     <>
+       {user?<Redirect to="/home"/>:""}
           <div className="mt-4 col-4 offset-4">
       <form className="mt-4 ">
   <div class="mb-3">
