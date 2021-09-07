@@ -33,3 +33,72 @@ class User extends React.Component {
     )
   }
 }
+
+
+
+
+
+
+
+QWhat is the purpose of callback function as an argument of setState()?
+The callback function is invoked when setState finished and the component gets rendered. Since setState() is asynchronous the callback function is used for any post action.
+
+Note: It is recommended to use lifecycle method rather than this callback function.
+
+setState({ name: 'John' }, () => console.log('The name has updated and component re-rendered'))
+
+
+
+
+
+
+QWhat are synthetic events in React?
+SyntheticEvent is a cross-browser wrapper around the browser's native event. It's API is same as the browser's native event, including stopPropagation() and preventDefault(), except the events work identically across all browsers.
+
+
+
+
+
+QWhat is the use of refs?
+The ref is used to return a reference to the element. They should be avoided in most cases, however, they can be useful when you need a direct access to the DOM element or an instance of a component.
+
+⬆ Back to Top
+
+How to create refs?
+There are two approaches
+
+This is a recently added approach. Refs are created using React.createRef() method and attached to React elements via the ref attribute. In order to use refs throughout the component, just assign the ref to the instance property within constructor.
+
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props)
+    this.myRef = React.createRef()
+  }
+  render() {
+    return <div ref={this.myRef} />
+  }
+}
+You can also use ref callbacks approach regardless of React version. For example, the search bar component's input element accessed as follows,
+
+class SearchBar extends Component {
+   constructor(props) {
+      super(props);
+      this.txtSearch = null;
+      this.state = { term: '' };
+      this.setInputSearchRef = e => {
+         this.txtSearch = e;
+      }
+   }
+   onInputChange(event) {
+      this.setState({ term: this.txtSearch.value });
+   }
+   render() {
+      return (
+         <input
+            value={this.state.term}
+            onChange={this.onInputChange.bind(this)}
+            ref={this.setInputSearchRef} />
+      );
+   }
+}
+You can also use refs in function components using closures. Note: You can also use inline ref callbacks even though it is not a recommended approach
