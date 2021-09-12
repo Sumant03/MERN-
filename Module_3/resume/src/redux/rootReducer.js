@@ -1,4 +1,4 @@
-import templateReducer from "./reducers/templateReducer";
+import templateReducer from "./reducers/templateReducer"
 import userReducer from "./reducers/userReducer";
 import detailsReducer from "./reducers/detailsReducer"; 
 

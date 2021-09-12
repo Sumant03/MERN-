@@ -1,10 +1,10 @@
 .preview-container{
-    
-    border: 1px solid blue;
+margin: 30px;
+}
 
-    
-
-
-
-
+.template-A{
+    color: red;
+}
+.template-B{
+    color:blue
 }

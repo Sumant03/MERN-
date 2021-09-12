@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux';
 import {auth,firestore} from "./firebase"
 import {userCreator} from  "./redux/actions/userActions"
 import PersonalData from "./components/personalData"
+import Qualificatons from "./components/qualifications"
 let App=()=>{
 let dispatch=useDispatch();
 
@@ -21,7 +22,7 @@ let unsub=auth.onAuthStateChanged(async (user)=>{
     let docRef=firestore.collection("users").doc(uid)
     let doc=await docRef.get();
     if(!doc.exists){
-      docRef.set({email,})
+      docRef.set({email})
     }
   }
 console.log(user)
@@ -30,10 +31,6 @@ console.log(user)
 return()=> unsub();
 
 },[])
-
-
-
-
   return(
     <div>
      
@@ -41,6 +38,11 @@ return()=> unsub();
  <Navbar/>
  
  <Switch>
+
+ <Route  path="/qualifications">
+  <Qualificatons/>
+
+  </Route>
 
  <Route  path="/personal">
   <PersonalData/>
