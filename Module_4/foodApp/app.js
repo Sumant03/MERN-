@@ -1,11 +1,11 @@
 const express=require('express');
 const app=express();
 
-
-app.listen('3000',function(){
-    console.log('');
+let port=8080
+app.listen(port,function(){
+    console.log('hi there server started');
 });
 
-app.get('/',(req,res)=>{
+// app.get('/',(req,res)=>{
 
-})
+// })
