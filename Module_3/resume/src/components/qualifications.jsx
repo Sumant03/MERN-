@@ -2,13 +2,19 @@ import Preview from "./preview";
 import "./css/personal.css";
 import { useDispatch, useSelector } from "react-redux";
 import { detailCreator } from "../redux/actions/detailsCreatore";
-import { useHistory } from "react-router";
+import { useHistory } from "react-router"
+import {saveResume} from "../redux/actions/saveResume" 
 
 let Qualificatons = () => {
   let details = useSelector((state) => state.details);
-  console.log(details);
+//   console.log(details);
  let history=useHistory();
-  let { degree,college,cgpa,year} = details;
+  let { degree,college,cgpa,year,isPublic} = details;
+  let user=useSelector((state)=>state.user)
+  let {uid}=user;
+  console.log(uid);
+  let code=useSelector((state)=>state.template)
+  let  val=useSelector((state)=>state. details)
 
   let dispatch = useDispatch();
 
@@ -64,12 +70,40 @@ let Qualificatons = () => {
                 placeholder="Year of grad"
               />
             </div>
-
+             
+            <div class="form-check m-4">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                checked={isPublic}
+                id="flexCheckDefault"
+                onClick={(e)=>{
+                    dispatch(detailCreator({ isPublic: e.currentTarget.checked }));
+                }}
+              />
+              <label class="form-check-label" for="flexCheckDefault">
+                Default checkbox
+              </label>
+            </div>
             
           </div>
 
           <button className="btn btn-primary m-4" onClick={()=>{history.push("/personalData")}}>Back</button>
         </div>
+
+        <button className="btn btn-primary qual-gen"
+
+        >Generate link</button>
+      <button
+  
+        className="btn btn-primary qual-save"
+        onClick={()=>{  
+             dispatch(saveResume(uid,val,code))
+    }}
+      >
+        Save to Database
+      </button>
+
         <Preview />
       </div>
     </>

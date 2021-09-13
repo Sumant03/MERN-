@@ -6,7 +6,7 @@ let Preview = () => {
   
    let user=useSelector((state)=>state. details);
    let templateCode = useSelector((state) => state.template);
-   console.log(templateCode);
+  //  console.log(templateCode);
    let { fname, lname, email, phone, city, state,college,degree,cgpa,year }=user;
   return <div>
         <div className="preview-container">

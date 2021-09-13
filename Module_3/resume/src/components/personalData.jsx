@@ -6,7 +6,7 @@ import { useHistory } from "react-router";
 
 let PersonalData = () => {
   let details = useSelector((state) => state.details);
-  console.log(details);
+  // console.log(details);
    let history=useHistory();
   let { fname, lname, email, phone, city, state } = details;
 
