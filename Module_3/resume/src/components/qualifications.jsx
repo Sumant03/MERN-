@@ -9,6 +9,7 @@ let Qualificatons = () => {
   let details = useSelector((state) => state.details);
 //   console.log(details);
  let history=useHistory();
+  
   let { degree,college,cgpa,year,isPublic} = details;
   let user=useSelector((state)=>state.user)
   let {uid}=user;
@@ -17,7 +18,7 @@ let Qualificatons = () => {
   let  val=useSelector((state)=>state. details)
 
   let dispatch = useDispatch();
-
+  let {id}=useSelector((state)=>state.save)
   return (
     <>
       <div className="personal-container">
@@ -92,7 +93,10 @@ let Qualificatons = () => {
         </div>
 
         <button className="btn btn-primary qual-gen"
-
+        onClick={()=>{ 
+       alert(`localhost:3000/publicPreview/${id}`
+          );
+          }}
         >Generate link</button>
       <button
   

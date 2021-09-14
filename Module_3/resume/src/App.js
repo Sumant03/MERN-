@@ -9,6 +9,7 @@ import {auth,firestore} from "./firebase"
 import {userCreator} from  "./redux/actions/userActions"
 import PersonalData from "./components/personalData"
 import Qualificatons from "./components/qualifications"
+import PublicPreview from "./components/publicPreview"
 let App=()=>{
 let dispatch=useDispatch();
 
@@ -38,6 +39,11 @@ return()=> unsub();
  <Navbar/>
  
  <Switch>
+
+  <Route path="/publicPreview/:rid">
+  <PublicPreview/>
+</Route>
+
 
  <Route  path="/qualifications">
   <Qualificatons/>
