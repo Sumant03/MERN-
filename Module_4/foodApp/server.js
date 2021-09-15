@@ -12,23 +12,23 @@ app.listen(port,function(){
 app.use(express.json());
 app.use(express.static('public'))
 
-// const userRouter=express.Router();
+const userRouter=express.Router();
 const authRouter=express.Router();
-// app.use('/user',userRouter);
+app.use('/user',userRouter);
 app.use('/auth',authRouter);
 
 
 
-// userRouter
-// .route('/')
-// .get(getUser)
-// .post(createUser)
-// .patch(updateUser)
-// .delete(deleteUser)
+userRouter
+.route('/')
+.get(getUser)
+.post(createUser)
+.patch(updateUser)
+.delete(deleteUser)
 
-// userRouter
-// .route('/:id')
-// .get(getUserById);
+userRouter
+.route('/:id')
+.get(getUserById);
 
 
 authRouter
@@ -64,21 +64,21 @@ function signupUser(req,res){
 // //   console.log(req.body);
 // // })
 
-// function getUser(req,res){
-//     res.json(user);
-// }
-// let user={};
+function getUser(req,res){
+    res.json(user);
+}
+let user={};
 // // app.post('/user',(req,res)=>{
 // //     user=req.body;
 // //     console.log(req.body);
 // //     res.send('data has been added')
 // // })
 
-// function createUser(req,res){
-//     user=req.body;
-//     // console.log(req.body);
-//     res.send('data has been added succesfully');
-// }
+function createUser(req,res){
+    user=req.body;
+    // console.log(req.body);
+    res.send('data has been added succesfully');
+}
 
 // // app.patch('/user',(req,res)=>{
 // //     let obj=req.body;
@@ -91,24 +91,24 @@ function signupUser(req,res){
 // //     res.json(user)
 // // })
 
-// function updateUser (req,res){
-//     let obj=req.body;
-//     for(let key in obj){
-//         user[key]=obj[key];
-//     }
-//     res.json(user);
-// };
+function updateUser (req,res){
+    let obj=req.body;
+    for(let key in obj){
+        user[key]=obj[key];
+    }
+    res.json(user);
+};
 
-// function deleteUser(req,res){
-//     user={};
-//     res.json(user);
-//     // res.send('ussr has been deleted');
-// }
+function deleteUser(req,res){
+    user={};
+    res.json(user);
+    // res.send('ussr has been deleted');
+}
 
-// function getUserById(req,res){
-//     console.log(req.params);
-//     res.json(req.params.id);
-// }
+function getUserById(req,res){
+    console.log(req.params);
+    res.json(req.params.id);
+}
 
 // app.delete('/user',(req,res)=>{
 //     user={};
@@ -119,3 +119,15 @@ function signupUser(req,res){
 //     console.log(req.params);
 //     res.json(req.params.id)
 // })
+
+
+//404 error page at the end
+app.use((res,req)=>{
+    res.sendFile('public/404.html',{root:__dirname})
+})
+
+
+//redirect
+app.get('/user-all',(req,res)=>{
+    res.redirect('/user');
+})
