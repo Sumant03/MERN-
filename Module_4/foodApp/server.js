@@ -1,22 +1,24 @@
 const express=require('express');
-
-//server creation
 const app=express();
-
-
-let port='5000';
-app.listen(port,function(){
-    console.log('hi there server started');
+// const router=express.Router();
+app.listen('5000',function(){
+    console.log('server listening on port 5000');
 });
 
 app.use(express.json());
-app.use(express.static('public'))
+// app.use((req,res,next)=>{
+//     //do some work
+//     console.log('i am a middleware');
+//     next();
+// });
 
+app.use(express.static('public'));
 const userRouter=express.Router();
 const authRouter=express.Router();
+
 app.use('/user',userRouter);
 app.use('/auth',authRouter);
-
+//mounting in express
 
 
 userRouter
@@ -24,73 +26,86 @@ userRouter
 .get(getUser)
 .post(createUser)
 .patch(updateUser)
-.delete(deleteUser)
+.delete(deleteUser);
+
+// app.use((req,res,next)=>{
+//     //do some work
+//     console.log('i am a middleware 2nd time');
+//     next();
+// });
 
 userRouter
 .route('/:id')
 .get(getUserById);
-
+	// @@ -29,7 +43,40 @@ 
+    authRouter
+.route('/signup')
+.post(signupUser);
 
 authRouter
-.route('/signup')
-.post(signupUser)
+.route('/forgetPassword')
+.get(getForgetPassword)
+.post(postForgetPassword,validateEmail);
 
-//types of request -> get post put delete
+function getForgetPassword(req,res){
+    res.sendFile('./public/forgetPassword.html',{root:__dirname});
+}
 
-function signupUser(req,res){
+function postForgetPassword(req,res,next){
+    let data=req.body;
+    console.log('data',data);
+    //check if email id is correct- validate
+    next();
+    //check if user exists in db
+    // res.json({
+    //     message:"data received",
+    //     data:data.email
+    // })
+};
 
-    let {email,name,password}=req.body;
-    user.push({email,name,password});
-    console.log('user',req.body);
-    res.json({
-        message:'user signup',
-        user:req.body
-    })}
+function validateEmail(req,res){
+    console.log('in validateEmail function');
+    console.log(req.body);
+    //hw to check if email is correct or not -> @ , .
+    //indexOf
+     res.json({
+            message:"data received",
+            data:req.body
+        });
+}
 
 
+https://classroom.pepcoding.com/index
+//redirects
+app.get('/user-all',(req,res)=>{
+    res.redirect('/user');
+	// @@ -62,13 +109,14 @@ 
+    let user=[];
+// client <- server
+//crud- create read update delete
+//read
 // app.get('/',(req,res)=>{
-//     console.log(req);
-//     console.log(req.hostname);
-//     console.log(req.path);
-//     console.log(req.method);
-// res.send('<h1>server 5000</h1>');
+//     res.send('Home Page');
+// });
 
-// })
-// let obj={}
-
-// // app.get('/user',(req,res)=>{
-    
-// // res.send(obj);
-// //   console.log(req.body);
-// // })
+// app.get('/user',getUser);
 
 function getUser(req,res){
+    console.log('getUser called');
     res.json(user);
 }
-let user={};
-// // app.post('/user',(req,res)=>{
-// //     user=req.body;
-// //     console.log(req.body);
-// //     res.send('data has been added')
-// // })
 
+//post request
+// client-> server 
+//create
+// app.post('/user',createUser);
 function createUser(req,res){
     user=req.body;
     // console.log(req.body);
     res.send('data has been added succesfully');
 }
-
-// // app.patch('/user',(req,res)=>{
-// //     let obj=req.body;
-// //     for(let key in obj){
-// //         user[key]=obj[key];
-
-// //     }
-// //     console.log(req.body);
-// //     console.log(user);
-// //     res.json(user)
-// // })
-
+//update
+// app.patch('/user',updateUser);
 function updateUser (req,res){
     let obj=req.body;
     for(let key in obj){
@@ -98,36 +113,16 @@ function updateUser (req,res){
     }
     res.json(user);
 };
-
+//delete 
+// app.delete('/user',deleteUser);
 function deleteUser(req,res){
     user={};
     res.json(user);
     // res.send('ussr has been deleted');
 }
-
+//param route
+// app.get('/user/:id',getUserById);
 function getUserById(req,res){
     console.log(req.params);
     res.json(req.params.id);
 }
-
-// app.delete('/user',(req,res)=>{
-//     user={};
-//     res.json(user)
-// })
-
-// app.get('/user/:id',(req,res)=>{
-//     console.log(req.params);
-//     res.json(req.params.id)
-// })
-
-
-//404 error page at the end
-app.use((res,req)=>{
-    res.sendFile('public/404.html',{root:__dirname})
-})
-
-
-//redirect
-app.get('/user-all',(req,res)=>{
-    res.redirect('/user');
-})
