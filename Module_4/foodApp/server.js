@@ -1,4 +1,5 @@
 const express=require('express');
+
 const app=express();
 // const router=express.Router();
 app.listen('5000',function(){
@@ -37,8 +38,8 @@ userRouter
 userRouter
 .route('/:id')
 .get(getUserById);
-	// @@ -29,7 +43,40 @@ 
-    authRouter
+
+authRouter
 .route('/signup')
 .post(signupUser);
 
@@ -79,8 +80,32 @@ https://classroom.pepcoding.com/index
 //redirects
 app.get('/user-all',(req,res)=>{
     res.redirect('/user');
-	// @@ -62,13 +109,14 @@ 
-    let user=[];
+});
+
+//404 page
+app.use((req,res)=>{
+    res.sendFile('public/404.html',{root:__dirname})
+});
+
+
+
+function signupUser(req,res){
+    // let userDetails=req.body;
+    // let name=userDetails.name;
+    // let email=userDetails.email;
+    // let password=userDetails.password;
+
+    let{email,name,password}=req.body;
+    user.push({email,name,password});
+    console.log('user',req.body);
+    res.json({
+        message:'user signedUp',
+        user:req.body
+    });
+}
+
+
+let user=[];
 // client <- server
 //crud- create read update delete
 //read
@@ -122,7 +147,9 @@ function deleteUser(req,res){
 }
 //param route
 // app.get('/user/:id',getUserById);
+
 function getUserById(req,res){
     console.log(req.params);
     res.json(req.params.id);
 }
+
