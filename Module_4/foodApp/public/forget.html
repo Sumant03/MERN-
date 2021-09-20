@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,9 +8,28 @@
     <title>Document</title>
 </head>
 <body>
-    
-<label>Forget password</label>
-<input type="test" placeholder="forget password"/>
-
+    <form>
+        <label>Email</label>
+        <input type="email">
+        
+        <button>Submit</button>
+    </form>
+<script 
+src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.4/axios.min.js" 
+crossorigin="anonymous">
+    </script>
+    <script>
+        let btn = document.querySelector("button");
+        btn.addEventListener("click", async function (e) {
+            // prevent page reload 
+            e.preventDefault();
+            // email
+    let email = document.querySelector("input[type='email']").value;
+            
+    let resp = await axios.post("/auth/forgetPassword", {email})
+            console.log(resp.data);
+        })
+    </script>
 </body>
+
 </html>
