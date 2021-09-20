@@ -8,3 +8,6 @@ validator npm for validation
 
 
 mongoose doc : https://mongoosejs.com/docs/guide.html
+
+
+JS : eloquent js

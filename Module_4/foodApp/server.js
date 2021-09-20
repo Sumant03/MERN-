@@ -1,5 +1,5 @@
 const express=require('express');
-
+const userModel=require("./models/userModels")
 const app=express();
 // const router=express.Router();
 app.listen('5000',function(){
@@ -40,13 +40,47 @@ userRouter
 .get(getUserById);
 
 authRouter
-.route('/signup')
-.post(signupUser);
-
-authRouter
 .route('/forgetPassword')
 .get(getForgetPassword)
 .post(postForgetPassword,validateEmail);
+
+
+
+authRouter
+.route('/signup')
+.post(setCreator,signupUser);
+
+
+function setCreator(req,res,next){
+    req.body.createdAt=new Date().toISOString();
+    next();
+}
+
+
+ async function signupUser(req,res){
+    // let userDetails=req.body;
+    // let name=userDetails.name;
+    // let email=userDetails.email;
+    // let password=userDetails.password;
+try{
+    
+    let userObj=await userModel.create(req.body);
+    console.log(userObj+"-----");
+
+
+    res.json({
+        message:'user signedUp',
+        user:req.body
+    
+    })
+
+}
+catch(err){
+    console.log(err);
+    res.json({message:err.message})
+}
+}
+
 
 function getForgetPassword(req,res){
     res.sendFile('./public/forgetPassword.html',{root:__dirname});
@@ -89,20 +123,6 @@ app.use((req,res)=>{
 
 
 
-function signupUser(req,res){
-    // let userDetails=req.body;
-    // let name=userDetails.name;
-    // let email=userDetails.email;
-    // let password=userDetails.password;
-
-    let{email,name,password}=req.body;
-    user.push({email,name,password});
-    console.log('user',req.body);
-    res.json({
-        message:'user signedUp',
-        user:req.body
-    });
-}
 
 
 let user=[];
