@@ -1,32 +1,39 @@
-const express=require('express')
+const express=require('express');
 const userRouter=express.Router();
+const userModel=require('../models/userModels');
+//routes
 
-
-let user=[];
 userRouter
 .route('/')
-.get(getUser)
+.get(protectRoute ,getUsers)
 .post(createUser)
 .patch(updateUser)
 .delete(deleteUser);
-
-// app.use((req,res,next)=>{
-//     //do some work
-//     console.log('i am a middleware 2nd time');
-//     next();
-// });
 
 userRouter
 .route('/:id')
 .get(getUserById);
 
-
-app.use('/user',userRouter);
-
-
-function getUser(req,res){
-    console.log('getUser called');
-    res.json(user);
+//functions
+async function getUsers(req,res){
+    try{
+        console.log('getUser called');
+        let users=await userModel.find();
+        if(users){
+            return res.json(users); 
+        }
+        else{
+            return res.json({
+                message:'users not found'
+            });
+        }
+    }
+    catch(err){
+        return res.json({
+            message:err.message
+        });
+    }
+     
 }
 
 //post request
@@ -54,51 +61,30 @@ function deleteUser(req,res){
     res.json(user);
     // res.send('ussr has been deleted');
 }
-//param route
-// app.get('/user/:id',getUserById);
 
 function getUserById(req,res){
     console.log(req.params);
     res.json(req.params.id);
 }
 
+let flag=true;
+
+function protectRoute(req,res,next){
+   try{
+    if(flag){
+        next();
+    }else{
+        res.json({
+            message:"operation not aloowed"
+        })
+    }
+
+}catch(err){
+    res.json({
+        message:err.message
+    })
+}
+}
 
 
-// function getForgetPassword(req,res){
-//     res.sendFile('./public/forgetPassword.html',{root:__dirname});
-// }
-
-// function postForgetPassword(req,res,next){
-//     let data=req.body;
-//     console.log('data',data);
-//     //check if email id is correct- validate
-//     next();
-//     //check if user exists in db
-//     // res.json({
-//     //     message:"data received",
-//     //     data:data.email
-//     // })
-// };
-
-// function validateEmail(req,res){
-//     console.log('in validateEmail function');
-//     console.log(req.body);
-//     //hw to check if email is correct or not -> @ , .
-//     //indexOf
-//      res.json({
-//             message:"data received",
-//             data:req.body
-//         });
-// }
-
-
-app.get('/user-all',(req,res)=>{
-    res.redirect('/user');
-});
-
-//404 page
-app.use((req,res)=>{
-    res.sendFile('public/404.html',{root:__dirname})
-});
-
-module.exports 
+module.exports=userRouter;
