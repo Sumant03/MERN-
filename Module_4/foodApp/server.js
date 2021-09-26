@@ -176,6 +176,8 @@
 const express=require('express');
 
 const app=express();
+const cookieParser=require('cookie-parser');
+app.use(cookieParser());
 // const router=express.Router();
 app.listen('5000',function(){
     console.log('server listening on port 5000');

@@ -67,12 +67,20 @@ function getUserById(req,res){
     res.json(req.params.id);
 }
 
-let flag=true;
+// let flag=false;
 
 function protectRoute(req,res,next){
    try{
-    if(flag){
-        next();
+       
+    if(req.cookies){
+        if(req.cookies.login=='1234'){
+          next();        
+        }else{
+            res.json({
+                message:"not authorized"
+            });
+        }
+    
     }else{
         res.json({
             message:"operation not aloowed"
@@ -80,7 +88,7 @@ function protectRoute(req,res,next){
     }
 
 }catch(err){
-    res.json({
+   return  res.status(500).json({
         message:err.message
     })
 }
