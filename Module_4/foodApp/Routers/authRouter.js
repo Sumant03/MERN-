@@ -2,8 +2,9 @@ const express=require('express');
 // const userRouter=express.Router();
 const userModel=require('../models/userModels');
 const authRouter=express.Router();
-const cookie=require('cookie-parser');
-
+// const cookie=require('cookie-parser');
+const jwt=require('jsonwebtoken');
+const {JSON_KEY}=require('../secrets');
 //----------routes-----------
 authRouter
 .route('/signup')
@@ -88,7 +89,10 @@ async function loginUser(req,res){
             let user= await userModel.findOne({email:req.body.email});
             if(user){
                 if(req.body.password==user.password){
-                     res.cookie('login','1234',{httpOnly:true})
+                     let payload=user['_id'];
+                     let token=jwt.sign({id:payload},JSON_KEY)
+                    console.log(token);
+                    res.cookie('login',token,{httpOnly:true})
                     return res.json({
                         message:"user loged in"
                     });
