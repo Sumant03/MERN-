@@ -2,7 +2,6 @@ const express=require('express');
 // const userRouter=express.Router();
 const userModel=require('../models/userModels');
 const authRouter=express.Router();
-// const cookie=require('cookie-parser');
 const jwt=require('jsonwebtoken');
 const {JSON_KEY}=require('../secrets');
 //----------routes-----------
@@ -92,7 +91,7 @@ async function loginUser(req,res){
                      let payload=user['_id'];
                      let token=jwt.sign({id:payload},JSON_KEY)
                     console.log(token);
-                    res.cookie('login',token,{httpOnly:true})
+                    res.cookie("login",token,{httpOnly:true})
                     return res.json({
                         message:"user loged in"
                     });

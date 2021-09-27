@@ -24,6 +24,7 @@ function protectRoute(req,res,next){
      }
  
  }catch(err){
+     console.log("getting error");
     return  res.status(500).json({
          message:err.message
      })
