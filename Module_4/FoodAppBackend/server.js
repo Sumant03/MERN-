@@ -43,7 +43,7 @@ userRouter
 function getUser(req,res){
     let body = req.body;
     console.log("req.body", req.body);
-    // data.add(body);
+    data.push(body);
 
 console.log("reached user");
 
