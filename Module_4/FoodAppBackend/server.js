@@ -4,32 +4,32 @@ const fs= require("fs");
 
 const app=express();
 app.use(express.json());
-// app.get("/",function(req,res){
-// console.log("hello");
-// // res.send("<h1>Hi there</h1>")
+app.get("/",function(req,res){
+console.log("hello");
+// res.send("<h1>Hi there</h1>")
 
-// let data=JSON.parse(fs.readFileSync("./data.json"));
-// res.json({
-//     message:data
-// })
-// })
-
-
-// app.post("/",function(req,res,next){
-
-//     console.log("before");
-//    return next()
-// })
+let data=JSON.parse(fs.readFileSync("./data.json"));
+res.json({
+    message:data
+})
+})
 
 
+app.post("/",function(req,res,next){
 
-// app.post("/",function(req,res){
-//     console.log("after");
-//     let body=req.body;
-//     res.json({
-//         message:body
-//     })
-// })
+    console.log("before");
+   return next()
+})
+
+
+
+app.post("/",function(req,res){
+    console.log("after");
+    let body=req.body;
+    res.json({
+        message:body
+    })
+})
 let data=JSON.parse(fs.readFileSync("./data.json"));
 const userRouter=express.Router();
 const authRouter=express.Router();
