@@ -121,4 +121,22 @@ async function loginUser(req,res){
     }
 }
 
+async function forgetPassword(req,res){
+    try{
+      let {email}=re.body;
+      let user=userModel.findOne({email});
+      if(user){
+
+      }else{
+          res.status(404).json({
+              message:"user not found"
+          })
+      }
+
+    }catch(err){
+      console.log(err.message);
+      res.status(500).json({message:err.message})
+    }
+}
+
 module.exports=authRouter;
