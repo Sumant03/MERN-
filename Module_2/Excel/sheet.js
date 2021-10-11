@@ -27,7 +27,7 @@ function addSheet(){
     sheetDiv.addEventListener("click",function(){
         switchSheet(sheetDiv);
     });
-    // initCells();
+    initCells();
    cleanUI();
     initDB();
    lastSelectedCell=undefined;
@@ -56,14 +56,14 @@ function switchSheet(currentSheet){
   db=sheetDB[sid].db;
  console.log(db);
  visitedCells=sheetDB[sid].visitedCells;
-//   let lastCellIndex=0;
-//   for(let i=0;i<db.length;i++){
-//       let dbRow=db[i];
-//       for(let j=0;j<dbRow.length;j++){
-//           allCells[lastCellIndex].textContent=dbRow[j].value;
-//           lastCellIndex++;
-//       }
-//   }
+  let lastCellIndex=0;
+  for(let i=0;i<db.length;i++){
+      let dbRow=db[i];
+      for(let j=0;j<dbRow.length;j++){
+          allCells[lastCellIndex].textContent=dbRow[j].value;
+          lastCellIndex++;
+      }
+  }
 for(let i=0;i<visitedCells.length;i++){
     let {rowId,colId}=visitedCells[i];
     let idx=Number(rowId)*100+Number(colId);
