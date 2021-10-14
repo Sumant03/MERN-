@@ -31,8 +31,8 @@ function addSheet(){
    cleanUI();
     initDB();
    lastSelectedCell=undefined;
-//    attachEventListener();
-//    lastSelectedCell=undefined;
+   attachEventListener();
+   lastSelectedCell=undefined;
    
 
 

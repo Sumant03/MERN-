@@ -1,4 +1,3 @@
-const { next } = require("cheerio/lib/api/traversing");
 const express=require("express");
 const fs= require("fs");
 
@@ -31,36 +30,36 @@ app.post("/",function(req,res){
     })
 })
 let data=JSON.parse(fs.readFileSync("./data.json"));
-const userRouter=express.Router();
-const authRouter=express.Router();
+// const userRouter=express.Router();
+// const authRouter=express.Router();
 
-app.use('/user',userRouter);
+// app.use('/user',userRouter);
 
-userRouter
-.route("/")
-.post(bodyChecker,getUser);
+// userRouter
+// .route("/")
+// .post(bodyChecker,getUser);
 
-function getUser(req,res){
-    let body = req.body;
-    console.log("req.body", req.body);
-    data.push(body);
+// function getUser(req,res){
+//     let body = req.body;
+//     console.log("req.body", req.body);
+//     data.push(body);
 
-console.log("reached user");
+// console.log("reached user");
 
-fs.writeFileSync("./data.json",JSON.stringify(data));
-res.json({message:data})
-}
+// fs.writeFileSync("./data.json",JSON.stringify(data));
+// res.json({message:data})
+// }
 
-function bodyChecker(req,res,next){
-    let val= Object.keys(req.body).length;
+// function bodyChecker(req,res,next){
+//     let val= Object.keys(req.body).length;
 
-    if(val){
-        console.log("calling other function");
-        next()
-    }else{
-        console.log("getting error");
-    }
-}
+//     if(val){
+//         console.log("calling other function");
+//         next()
+//     }else{
+//         console.log("getting error");
+//     }
+// }
 
 app.listen(8080,function(){
     console.log("server started");
