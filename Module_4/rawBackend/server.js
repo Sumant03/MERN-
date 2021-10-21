@@ -60,7 +60,7 @@ let data=JSON.parse(fs.readFileSync("./data.json"));
 //         console.log("getting error");
 //     }
 // }
-
+U
 app.listen(8080,function(){
     console.log("server started");
 })
