@@ -86,6 +86,28 @@ insert into emp_bkp select * from emp;
 select * from emp_bkp;
 
 
+### copying code to other table with some constraints
+
+
+create table emp(name varchar ,ecode varchar,salary int(50));
+
+insert into emp values('Sum',1,10000),('Tum',2,20000);
+
+select * from emp;
+
+create table emp_bkp(name varchar ,ecode varchar,salary int(50)) ;
+
+insert into emp_bkp  select name,ecode,salary from emp where (salary>10000);
+
+select * from emp_bkp;
+
+
+
+
+
+
+
+
 
 
 
