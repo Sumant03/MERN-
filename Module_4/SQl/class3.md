@@ -28,7 +28,9 @@ select * or colnames from table_name where condition  group by having ;
 
 --names of students whose marks are greater then average marks 
 
-select name from student where marks>(select sum(marks)/count(*) from student) 
+select name from student where marks>(select sum(marks)/count(*) from student)
+
+select * from student where marks between 60 and 80 and name like '%f%';
 
 
 
@@ -45,7 +47,46 @@ select name from student where marks>(select sum(marks)/count(*) from student)
 
 ## like vale commands
 
-select count(*),name,sum(marks) from student group by school_id;
--- select count(*),sum(marks) from student where name like 'f%';
+select count(*),sum(marks) from student group by school_id;
+select count(*),sum(marks) from student where name like 'f%';
+
+
+
+### Joins 
+create table t1(val int);
+
+create table t2(val int);
+
+insert into t1 values(10),(11),(12),(14);
+insert into t2 values(11),(12),(13),(15);
+
+
+
+-- select * from t1;
+-- select * from t2;
+
+
+--cartesian product(cross join)
+-- select * from t1,t2
+-- select * from t1 cross join t2
+
+
+
+
+
+--left outer join
+-- select * from t1 left outer join t2 on t1.val=t2.val;
+
+
+
+--right outer join
+select * from t2 right outer join t2 on t1.val=t2.val;
+
+
+
+
+
+
+
 
 
