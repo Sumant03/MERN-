@@ -1,3 +1,23 @@
+https://codeshare.io/r9LreK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ##update functions
 BEGIN TRANSACTION;
 CREATE TABLE student( name varchar(20),school_id integer );
@@ -83,6 +103,20 @@ room_name
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+###
+subquery
 
 
 
