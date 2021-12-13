@@ -121,3 +121,25 @@ function createUser(req,res){
 app.listen(8081,function(){
     console.log("server started");
 })
+
+
+// two methods how next works 
+
+
+//  1  .post(bodyChecker, isAuthenticated, isAuthorized, createUser);
+
+//  2. app.post("/", function (req, res, next) {
+//     let body = req.body;
+//     console.log("inside first post", body);
+//     next();
+//       })
+//     app.use(function (req, res, next) {
+//     console.log("inside app.use",)
+//     next();
+//     })
+//     app.get("/", function (req, res) {
+//     app.post("/", function (req, res, next) {
+//     let body = req.body;
+//     console.log("inside second post", body);
+//     next();
+//       })
