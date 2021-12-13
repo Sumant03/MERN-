@@ -1,49 +1,38 @@
-import { useSelector } from "react-redux";
-import "./css/preview.css";
-import "./css/resume.css"
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
 
-let Preview = () => {
-   
-  
-   let user=useSelector((state)=>state. details);
-   let templateCode = useSelector((state) => state.template);
-  //  console.log(templateCode);
-   let { fname, lname, email, phone, city, state,college,degree,cgpa,year }=user;
-  return templateCode=="A"?
-         <>
+	<title>Jonathan Doe | Web Designer, Director | name@yourdomain.com</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
-        {/* <div className="preview-container">
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
 
-        <p className={`template-${templateCode}`}>{fname}</p>
-        <p className={`template-${templateCode}`}>{lname}</p>
-        <p className={`template-${templateCode}`}>{email}</p>
-        <p className={`template-${templateCode}`}>{phone}</p>
-        <p className={`template-${templateCode}`}>{city}</p>
-        <p className={`template-${templateCode}`}>{state}</p>
-        <p className={`template-${templateCode}`}>{college}</p>
-        <p className={`template-${templateCode}`}>{degree}</p>
-        <p className={`template-${templateCode}`}>{cgpa}</p>
-        <p className={`template-${templateCode}`}>{year}</p>
-        </div> */}
-   
+	<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/reset-fonts-grids/reset-fonts-grids.css" media="all" /> 
+	<link rel="stylesheet" type="text/css" href="resume.css" media="all" />
+
+</head>
+<body>
+
+<div id="doc2" class="yui-t7">
 	<div id="inner">
 	
 		<div id="hd">
 			<div class="yui-gc">
 				<div class="yui-u first">
-					<h1>{fname}</h1>
+					<h1>Jonathan Doe</h1>
 					<h2>Web Designer, Director</h2>
 				</div>
 
 				<div class="yui-u">
 					<div class="contact-info">
-						
-						<p><a href="mailto:name@yourdomain.com">{email}</a></p>
-						<p >{phone}</p>
-					</div>
+						<h3><a id="pdf" href="#">Download PDF</a></h3>
+						<h3><a href="mailto:name@yourdomain.com">name@yourdomain.com</a></h3>
+						<h3>(313) - 867-5309</h3>
+					</div><!--// .contact-info -->
 				</div>
-			</div>
-		</div>
+			</div><!--// .yui-gc -->
+		</div><!--// hd -->
 
 		<div id="bd">
 			<div id="yui-main">
@@ -58,7 +47,7 @@ let Preview = () => {
 								Progressively evolve cross-platform ideas before impactful infomediaries. Energistically visualize tactical initiatives before cross-media catalysts for change. 
 							</p>
 						</div>
-					</div>
+					</div><!--// .yui-gf -->
 
 					<div class="yui-gf">
 						<div class="yui-u first">
@@ -81,7 +70,7 @@ let Preview = () => {
 									<p>Proven ability to lead and manage a wide variety of design and development projects in team and independent situations.</p>
 								</div>
 						</div>
-					</div>
+					</div><!--// .yui-gf -->
 
 					<div class="yui-gf">
 						<div class="yui-u first">
@@ -106,13 +95,13 @@ let Preview = () => {
 								<li class="last">Linux</li>
 							</ul>
 						</div>
-					</div>
+					</div><!--// .yui-gf-->
 
 					<div class="yui-gf">
 	
 						<div class="yui-u first">
 							<h2>Experience</h2>
-						</div>
+						</div><!--// .yui-u -->
 
 						<div class="yui-u">
 
@@ -145,8 +134,8 @@ let Preview = () => {
 								<p>Globally re-engineer cross-media schemas through viral methods of empowerment. Proactively grow long-term high-impact human capital and highly efficient innovation. Intrinsicly iterate excellent e-tailers with timely e-markets.</p>
 							</div>
 
-						</div>
-					</div>
+						</div><!--// .yui-u -->
+					</div><!--// .yui-gf -->
 
 
 					<div class="yui-gf last">
@@ -157,38 +146,23 @@ let Preview = () => {
 							<h2>Indiana University - Bloomington, Indiana</h2>
 							<h3>Dual Major, Economics and English &mdash; <strong>4.0 GPA</strong> </h3>
 						</div>
-					</div>
+					</div><!--// .yui-gf -->
 
 
-				</div>
-			</div>
-		</div>
+				</div><!--// .yui-b -->
+			</div><!--// yui-main -->
+		</div><!--// bd -->
 
 		<div id="ft">
 			<p>Jonathan Doe &mdash; <a href="mailto:name@yourdomain.com">name@yourdomain.com</a> &mdash; (313) - 867-5309</p>
-		</div>
+		</div><!--// footer -->
 
-	</div>
+	</div><!-- // inner -->
 
 
-</>
-  :<div>
-         
+</div><!--// doc -->
 
-        <div className="preview-container">
 
-        <p className={`template-${templateCode}`}>{fname}</p>
-        <p className={`template-${templateCode}`}>{lname}</p>
-        <p className={`template-${templateCode}`}>{email}</p>
-        <p className={`template-${templateCode}`}>{phone}</p>
-        <p className={`template-${templateCode}`}>{city}</p>
-        <p className={`template-${templateCode}`}>{state}</p>
-        <p className={`template-${templateCode}`}>{college}</p>
-        <p className={`template-${templateCode}`}>{degree}</p>
-        <p className={`template-${templateCode}`}>{cgpa}</p>
-        <p className={`template-${templateCode}`}>{year}</p>
-        </div>
-  </div>
-};
+</body>
+</html>
 
-export default Preview;
