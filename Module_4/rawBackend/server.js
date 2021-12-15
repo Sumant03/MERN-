@@ -26,7 +26,6 @@ userRouter
      .get(protectRoute,getUser)
      .post(bodyChecker,createUser);
 
-
 authRouter
     .route("/signup")
     .post(bodyChecker,signUp);
@@ -48,7 +47,6 @@ function protectRoute(req,res,next){
     }
 
 }
-
 
 function bodyChecker(req,res,next){
     console.log("reached body checker");
