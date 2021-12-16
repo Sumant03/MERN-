@@ -1,13 +1,16 @@
 const express =require("express");
 const fs=require("fs");
-
+const key=require("./secrets");
+const cookieParser = require('cookie-parser')
+const jwt = require('jsonwebtoken');
 const content =JSON.parse(fs.readFileSync("./data.json"))
 const app=express();
 const user=[];
 
+console.log(key.key);
 
 app.use(express.json());
-
+app.use(cookieParser())
 
 app.use(express.static("public"));
 
@@ -37,14 +40,22 @@ function getUser(req,res){
     res.json({message:content})
 }
 function protectRoute(req,res,next){
+    try{
     console.log("reached body checker");
     // console.log(req.body);
-    let isAllowed=true;
-    if(isAllowed){
+    let decryptedToken = jwt.verify(req.cookies.JWT,"abcdgdgf");
+    console.log("61",decryptedToken);
+    console.log(req.cookies);
+ 
+  
+    if(decryptedToken){
         next();
     }else{
         res.send("kindly send details in body");
     }
+}catch(err){
+    res.status(400).send({message:err.message})
+}
 
 }
 
@@ -52,8 +63,6 @@ function bodyChecker(req,res,next){
     console.log("reached body checker");
     // console.log(req.body);
     let isPresent =Object.keys(req.body).length;
-
-
     console.log("isPresent",isPresent);
     if(isPresent){
         console.log("1");
@@ -89,6 +98,11 @@ function loginUser(req,res){
     }
 
     if(obj.password==password){
+        var token = jwt.sign({ email: obj.email },key.key);
+        // header
+        console.log(token);
+        res.cookie("JWT", token);
+
         res.status(200).json({
             message:"User Logged In",
             user:obj
