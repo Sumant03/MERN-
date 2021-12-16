@@ -1,3 +1,4 @@
 module.exports = {
-    key: "abcd"
+    key: "abcd",
+    PASSWORD:"lQiyCUFWotMNaZiS"
 }

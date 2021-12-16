@@ -6,6 +6,8 @@ const jwt = require('jsonwebtoken');
 const content =JSON.parse(fs.readFileSync("./data.json"))
 const app=express();
 const user=[];
+const userModel=require("./models/userModel");
+const { use } = require("express/lib/application");
 
 console.log(key.key);
 
@@ -71,20 +73,20 @@ function bodyChecker(req,res,next){
     }
 
 }
-function signUp(req,res){
-    let {name,email,password,cpassword}=req.body;
-    console.log(2);
-        if(password==cpassword){
-        let newUser={name,email,password};
-        // console.log(newUser);
-            content.push(newUser);
-            fs.writeFileSync("./data.json",JSON.stringify(content));
-            console.log(3);
-            res.status(201).json({createdUser:newUser})
-        }else{
-            res.status(400).json({message:"p&Cpincorrrect"});
+async function signUp(req,res){
+  try{
 
-        }
+    let newUser = await userModel.create(req.body);
+    res.status(200).json({
+        "message":"user created successfully",
+        user:newUser
+    })
+  }catch(err){
+      res.status(500).json({
+          "message":"data invalid",
+          err:err.message
+      })
+  }
     
     }
 function loginUser(req,res){
