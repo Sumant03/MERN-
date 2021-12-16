@@ -35,7 +35,6 @@ authRouter
 authRouter
     .route("/login")
     .post(bodyChecker,loginUser);
-
 function getUser(req,res){
     res.json({message:content})
 }
