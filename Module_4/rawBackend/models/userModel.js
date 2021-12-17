@@ -52,8 +52,11 @@ const userSchema=mongoose.Schema({
 userSchema.pre('save', function(next) {
   // do stuff
   this.confirmPassword=undefined;
+  this.token=undefined;
   next();
 });
+
+
 
 let userModel=mongoose.model("userModel",userSchema);
 module.exports =userModel;

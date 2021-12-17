@@ -19,6 +19,9 @@ authRouter
 authRouter
     .route("/forgetPassword")
     .post(bodyChecker,forgetPassword);
+authRouter
+    .route("/resetPassword")
+    .post(bodyChecker,resetPassword);
 
 async function signUp(req,res){
         try{
@@ -105,7 +108,43 @@ async function forgetPassword(req,res){
             })
         }
           }
+async function resetPassword(req,res){
+            let {token,password,confirmPassword}=req.body;
+              
+            try {
                 
+                // search on the basis of email
+                let user = await userModel.findOne({ token })
+                if (user) {
+                    
+                    this.password=password;
+                    this.confirmPassword=confirmPassword;
+                    this.token=undefined;
+                    user.save();
+
+                    let newUser = await userModel.findOne({email:user.email });
+                    console.log("cred saved");
+        
+                    res.status(200).json({
+                        message: "user token send to your email",
+                        user: newUser,
+                        token
+                    })
+                } else {
+                    res.status(404).json({
+                        message:
+                            "user not found with creds"
+                    })
+                }
+                // create token
+                // -> update the user with a new token 
+            } catch (err) {
+                console.error(err);
+                res.status(500).json({
+                    message: err.message
+                })
+            }
+              }                
 
 
 module.exports=authRouter;
