@@ -117,9 +117,9 @@ async function resetPassword(req,res){
                 let user = await userModel.findOne({ token })
                 if (user) {
                     
-                    user.password=password;
-                    user.confirmPassword=confirmPassword;
-                    user.token=undefined;
+                    this.password=password;
+                    this.confirmPassword=confirmPassword;
+                    this.token=undefined;
                     user.save();
 
                     let newUser = await userModel.findOne({email:user.email });
