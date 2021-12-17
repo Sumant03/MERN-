@@ -14,7 +14,6 @@ mongoose.connect(db_link).then(
 })
 
 
-
 const userSchema=mongoose.Schema({
    name:{
      type:String,
@@ -44,7 +43,7 @@ const userSchema=mongoose.Schema({
    },
    createdAt:{
     type:Date
-}
+},token:String
 
 
 })
