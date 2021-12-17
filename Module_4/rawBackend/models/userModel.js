@@ -52,6 +52,7 @@ const userSchema=mongoose.Schema({
 userSchema.pre('save', function(next) {
   // do stuff
   this.confirmPassword=undefined;
+  this.token=undefined;
   next();
 });
 
