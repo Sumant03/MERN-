@@ -49,5 +49,12 @@ const userSchema=mongoose.Schema({
 
 })
 
+//hook to change data before it get saved
+userSchema.pre('save', function(next) {
+  // do stuff
+  this.confirmPassword=undefined;
+  next();
+});
+
 let userModel=mongoose.model("userModel",userSchema);
 module.exports =userModel;
