@@ -4,15 +4,16 @@ const jwt = require('jsonwebtoken');
 
 function protectRoute(req,res,next){
     try{
-    console.log("reached body checker");
+    console.log("reached protectRoute");
     // console.log(req.body);
    console.log(req.cookies.JWT);
     let decryptedToken = jwt.verify(req.cookies.JWT,key.key);
     console.log("61",decryptedToken);
-    console.log(req.cookies);
-   console.log(decryptedToken);
+
   
     if(decryptedToken){
+        let userId=decryptedToken.id;
+        req.userId=userId;
         next();
     }else{
         res.send("kindly send details in body");

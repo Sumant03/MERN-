@@ -3,18 +3,20 @@ const userRouter=express.Router();
 const userModel=require("../models/userModel");
 const {key}=require("../secrets");
 const jwt = require('jsonwebtoken');
-const {bodyChecker,protectRoute}=require("./myMiddleWare")
+const {bodyChecker,protectRoute}=require("./myMiddleWare");
+const { next } = require("cheerio/lib/api/traversing");
+const res = require("express/lib/response");
 userRouter
      .route('/')
-     .get(protectRoute,getUsers)
-     .post(bodyChecker,createUser);
+     .get(protectRoute,isAuthorized(["admin","ce"]),getUsers)
+     .post(bodyChecker,isAuthorized(["admin"]),createUser);
 
 
 userRouter
-.route(":/id")
+.route("/:id")
     .get(getUser)
-    .post(bodyChecker,updateUser)
-    .delete(bodyChecker,deleteUser)
+    .post(bodyChecker,isAuthorized(["admin","ce"]),updateUser)
+    .delete(bodyChecker,isAuthorized(["admin"]),deleteUser)
 
 async function createUser(req,res){
       
@@ -63,16 +65,26 @@ async function getUser(req,res){
 
 async function updateUser(req,res){
     let {id} =req.params;
+    console.log("1");
     try{
-
+        console.log("2");
         let user=await userModel.findById(id);
         if(user){
+            console.log("3");
+            if(req.body.password&&req.body.confirmPassword){
+                return res.json({
+                    "message":"use forget password instead"
+                })
+            }
            
-            for(let key in user){
+            for(let key in req.body){
                 user[key]=req.body[key];
             }
-            await user.save();
-            res.send(200).json({
+            await user.save({
+                validateBeforeSave:false
+            });
+            console.log("4");
+            res.status(200).json({
                 "message":"data updated",
                 data:user
             })
@@ -100,4 +112,28 @@ async function deleteUser(req,res){
         })
     }
     }
+ function isAuthorized(roles){
+     console.log("I will run when server started ");
+ return async function(){
+     let {userId}=req;
+       
+     try{
+     let user =await userModel.findById(userId);
+     let userisAuthorized=roles.includes(user.role);
+
+     if(userisAuthorized){
+         next();
+     }else{
+         res.json({
+             "Message":"user not authorized"
+         })
+     }
+ }
+ catch(err){
+     res.json({
+         "Message":"user not authorized"
+     })
+ }
+}
+ }
 module.exports=userRouter;
