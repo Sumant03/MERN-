@@ -1,6 +1,7 @@
 const express =require("express");
 const key=require("../secrets");
 const jwt = require('jsonwebtoken');
+const userModel=require("../models/userModel");
 
 function protectRoute(req,res,next){
     try{
@@ -41,5 +42,31 @@ function bodyChecker(req,res,next){
 }
 
 
+function isAuthorized(roles){
+    console.log("I will run when server started ");
+return async function(){
+    let {userId}=req;
+    console.log("Now function is called");
+    try{
+    let user =await userModel.findById(userId);
+    let userisAuthorized=roles.includes(user.role);
 
-module.exports={protectRoute,bodyChecker};
+    if(userisAuthorized){
+        next();
+    }else{
+        res.json({
+            "Message":"user not authorized"
+        })
+    }
+}
+catch(err){
+    res.json({
+        "message":"user not authorized",
+        err:err.message
+    })
+}
+}
+}
+
+
+module.exports={protectRoute,bodyChecker,isAuthorized};

@@ -7,6 +7,7 @@ const cookieParser = require('cookie-parser')
 const app=express();
 const userRouter=require("./routers/userRouter");
 const authRouter=require("./routers/authRouter");
+const planRouter=require("./routers/planRouter");
 
 
 
@@ -17,7 +18,7 @@ app.use(express.static("public"));
 
 app.use('/user',userRouter);
 app.use('/auth',authRouter);
-
+app.use('/plan',planRouter);
 
 app.listen(8081,function(){
     console.log("server started");
