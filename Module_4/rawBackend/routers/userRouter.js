@@ -112,11 +112,15 @@ async function deleteUser(req,res){
         })
     }
     }
+
+ //1.           this is find of closure function where (we have a function in background which contains roles and 
+ //2.           there is an async function inside it can which get the role as an closure and can return its output )   
+
  function isAuthorized(roles){
      console.log("I will run when server started ");
  return async function(){
      let {userId}=req;
-       
+     console.log("Now function is called");
      try{
      let user =await userModel.findById(userId);
      let userisAuthorized=roles.includes(user.role);
@@ -131,7 +135,8 @@ async function deleteUser(req,res){
  }
  catch(err){
      res.json({
-         "Message":"user not authorized"
+         "message":"user not authorized",
+         err:err.message
      })
  }
 }
