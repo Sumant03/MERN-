@@ -21,7 +21,7 @@ authRouter
     .post(bodyChecker,forgetPassword);
 authRouter
     .route("/resetPassword")
-    .post(bodyChecker,resetPassword);
+    .post(bodyChecker,resetP);
 
 async function signUp(req,res){
         try{
@@ -108,7 +108,7 @@ async function forgetPassword(req,res){
             })
         }
           }
-async function resetPassword(req,res){
+async function resetP(req,res){
             let {token,password,confirmPassword}=req.body;
               
             try {

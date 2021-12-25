@@ -43,7 +43,13 @@ const userSchema=mongoose.Schema({
    },
    createdAt:{
     type:Date
-},token:String
+},token:String,
+role:{
+  type:String,
+  enum:["admin","ce","user"],
+  //enum is used to disaply specified values . like in weekdays names we have only 7 specified values
+  default:"user"
+}
 
 
 })
