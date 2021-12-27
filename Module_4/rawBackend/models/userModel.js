@@ -43,7 +43,10 @@ const userSchema=mongoose.Schema({
    },
    createdAt:{
     type:Date
-},token:String,
+},token:{
+   type:Date,
+   default:Date.now()
+},
 role:{
   type:String,
   enum:["admin","ce","user"],
