@@ -10,6 +10,7 @@ const emailSender=require("../helpers/emailSender");
 const { networkInterfaces } = require("os");
 
 
+
 authRouter
     .route("/signup")
     .post(bodyChecker,signUp);

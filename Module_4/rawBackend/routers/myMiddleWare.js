@@ -29,7 +29,7 @@ function protectRoute(req,res,next){
 
 function bodyChecker(req,res,next){
     console.log("reached body checker");
-    console.log(req.body);
+    // console.log(req.body);
     let isPresent =Object.keys(req.body).length;
     console.log("isPresent",isPresent);
     if(isPresent){
@@ -44,13 +44,18 @@ function bodyChecker(req,res,next){
 
 function isAuthorized(roles){
     console.log("I will run when server started ");
-return async function(){
+return async function(req,res,next){
+    console.log("userID = ",req.userId);
     let {userId}=req;
+       console.log(req.body);
     console.log("Now function is called");
     try{
+   console.log(req.body);
     let user =await userModel.findById(userId);
+    console.log("user",user);
     let userisAuthorized=roles.includes(user.role);
-
+   
+    //  console.log("check",userisAuthorized);
     if(userisAuthorized){
         next();
     }else{

@@ -6,7 +6,7 @@ function createElement(model){
         try{
             let element=await model.create(req.body);
             res.status(200).json({
-                "message":"user added in database",
+                "message":"element added in database",
                 data:element
             })
     
@@ -56,12 +56,12 @@ function getElements(model){
 function updateElement(model){
   return  async function(req,res){
         let {id} =req.params;
-        console.log("1");
+        // console.log("getting req.params from factory");
         try{
-            console.log("2");
+            // console.log("2");
             let element=await model.findById(id);
             if(element){
-                console.log("3");
+                // console.log("3");
                 if(req.body.password||req.body.confirmPassword){
                     return res.json({
                         "message":"use forget password instead"
@@ -74,7 +74,7 @@ function updateElement(model){
                 await element.save({
                     validateBeforeSave:false
                 });
-                console.log("4");
+                // console.log("4");
                 res.status(200).json({
                     "message":"data updated",
                     data:element
