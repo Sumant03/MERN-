@@ -10,6 +10,7 @@ const emailSender=require("../helpers/emailSender");
 const { networkInterfaces } = require("os");
 
 
+
 authRouter
     .route("/signup")
     .post(bodyChecker,signUp);
@@ -116,6 +117,10 @@ async function resetP(req,res){
                 // search on the basis of email
                 let user = await userModel.findOne({ token })
                 if (user) {
+
+                    if(user.validUpto+300<Data.now()){
+                      return;
+                    }
                     
                     this.password=password;
                     this.confirmPassword=confirmPassword;

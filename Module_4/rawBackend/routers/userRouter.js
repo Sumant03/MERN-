@@ -8,6 +8,13 @@ const { next } = require("cheerio/lib/api/traversing");
 const res = require("express/lib/response");
 const {createElement,getElement,getElements,deleteElement,updateElement}=require("../helpers/factory");
 
+
+const getUsers=getElements(userModel);
+const getUser=getElement(userModel);
+const updateUser=updateElement(userModel);
+const deleteUser=deleteElement(userModel);
+const createUser=createElement(userModel);
+
 userRouter
      .route('/')
      .get(protectRoute,isAuthorized(["admin","ce"]),getUsers)
@@ -17,10 +24,10 @@ userRouter
 userRouter
 .route("/:id")
     .get(getUser)
-    .post(bodyChecker,isAuthorized(["admin","ce"]),updateUser)
+    .patch(bodyChecker,isAuthorized(["admin","ce"]),updateUser)
     .delete(bodyChecker,isAuthorized(["admin"]),deleteUser)
 
-    const createUser=createElement(userModel);
+
 // async function createUser(req,res){
       
 //     try{
@@ -38,7 +45,7 @@ userRouter
 //     }
 
 
-const getUsers=getElements(userModel);
+
 // async function getUsers(req,res){
 //         let user=await userModel.find();
 //       try{
@@ -52,7 +59,7 @@ const getUsers=getElements(userModel);
 //     }
 //     }
 
-const getUser=getElement(userModel);
+
 // async function getUser(req,res){
 //     let {id}=req.params;
 //     try{
@@ -70,7 +77,7 @@ const getUser=getElement(userModel);
 //     }
     
 //     }
-const updateUser=updateElement(userModel);
+
 // async function updateUser(req,res){
 //     let {id} =req.params;
 //     console.log("1");
@@ -105,7 +112,8 @@ const updateUser=updateElement(userModel);
 //         })
 //     }
 // }
-const deleteUser=deleteElement(userModel);
+
+
 // async function deleteUser(req,res){
 //     let {id} =req.params;
 //     try{

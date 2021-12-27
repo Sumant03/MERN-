@@ -7,7 +7,7 @@ const validator = require("email-validator");
 
 mongoose.connect(db_link).then(
     function(connection){
-      console.log(connection);
+    //   console.log(connection);
     }
 ).catch(function(err){
  console.log("error",err);
@@ -49,5 +49,5 @@ const planSchema=mongoose.Schema({
 
 
 
-let planModel=mongoose.model("userModel",planSchema);
+let planModel=mongoose.model("planModel",planSchema);
 module.exports =planModel;
