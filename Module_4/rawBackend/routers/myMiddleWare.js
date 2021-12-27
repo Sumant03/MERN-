@@ -26,7 +26,6 @@ function protectRoute(req,res,next){
 
 }
 
-
 function bodyChecker(req,res,next){
     console.log("reached body checker");
     // console.log(req.body);
