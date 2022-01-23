@@ -42,7 +42,11 @@ const planSchema=mongoose.Schema({
     },
     planImages: {
         type: [String]
-    }
+    },
+    review:{
+        type:[mongoose.Schema.ObjectId]
+    },
+    averageRating:Number,
 
 })
 

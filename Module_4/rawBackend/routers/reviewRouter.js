@@ -2,14 +2,25 @@ const express=require("express");
 const reviewModel = require("../models/reviewModel");
 const { protectRoute,isAuthorized,bodyChecker } = require("./myMiddleWare");
 let reviewRouter= express.Router();
-const {createElement,getElement,getElements,deleteElement,updateElement}=require("../helpers/factory");
+const {getElement,getElements,updateElement}=require("../helpers/factory");
+
+
 
 
 const getReview=getElement(reviewModel);
 const getReviews=getElements(reviewModel);
-const createReviews=createElement(reviewModel);
 const updateReviews=updateElement(reviewModel);
-const deleteReviews=deleteElement(reviewModel);
+
+
+
+//createReview
+
+//Review:-> put entry , 
+//->go in plan , 
+//->new review has come so we will 
+//->update its avarage rating
+//-> plan-> reviewID (add review) 
+
 
 
 reviewRouter.get("/getuseralso", getUsersAlso);
