@@ -43,34 +43,34 @@ let App=()=>{
   return (
    <>
   
- 
+  <div><h1>Hello Everyone</h1></div>
 
 
 
 
-  <AuthProvider>
-  <Router>
+   <AuthProvider>
+   <Router>
       
         
-
-        <Switch>
+   <div><h1>H1 Everyone</h1></div>
+         <Switch>
     
-      <Route exact  path="/">
-      <Home/>
-      </Route>
+    <Route exact  path="/">
+       <Home/>
+       </Route>
       
-      <Route exact path="/login">
-      <Login/>
-      </Route>
+       <Route exact path="/login">
+       <Login/>
+       </Route>
      
 
-    </Switch>
+     </Switch>
   
 
-    </Router>
-    </AuthProvider>
+     </Router>
+     </AuthProvider>
 
-    </>
+   </>
   )
 }
 

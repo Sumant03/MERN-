@@ -44,7 +44,8 @@ const planSchema=mongoose.Schema({
         type: [String]
     },
     review:{
-        type:[mongoose.Schema.ObjectId]
+        type:[mongoose.Schema.ObjectId],
+        ref:"reviewModel"
     },
     averageRating:Number,
 

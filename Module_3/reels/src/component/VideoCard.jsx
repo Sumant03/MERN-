@@ -10,7 +10,7 @@ let VideoCard = (props) => {
       <p className="video-card-username">{props.data.name}</p>
       <span className="video-card-music">
         <span className="material-icons">music_note</span>
-        <marquee>some song</marquee>
+        {/* <marquee>some song</marquee> */}
       </span>
 
       <span
